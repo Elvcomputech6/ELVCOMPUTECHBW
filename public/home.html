@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELVCOMPU TECH BW</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 0rem; /* Increased from 1rem to 2rem */
+        }
+
+        .container h1 img {
+            width: 100px;
+            height: 50px;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation */
+        .topnav {
+            background-color: #333;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+        }
+
+        .topnav a {
+            color: #f2f2f2;
+            text-align: center;
+            padding: 0.875rem 1rem;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .topnav a:hover {
+            color: orangered;
+        }
+
+        .topnav a.active {
+            background-color: orange;
+            color: white;
+        }
+
+        .topnav .search-container {
+            padding: 0.375rem 0.5rem;
+        }
+
+        .topnav input[type="text"] {
+            padding: 0.375rem;
+            font-size: 1rem;
+            border: none;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .topnav .search-container button {
+            padding: 0.375rem 0.625rem;
+            background: #ddd;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .topnav .search-container button:hover {
+            background: #ccc;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 1rem;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 0.875rem 1rem;
+            background-color: inherit;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: orangered;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        #logout-link {
+            cursor: pointer;
+        }
+
+        /* Intro Sections */
+        .intro-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .intro, .intro1 {
+            font-weight: bold;
+            font-size: 0.875rem;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .intro {
+            font-size: 0.875rem;
+        }
+    
+        .intro h2 {
+            font-size: 1rem;
+        }
+    
+        .intro h2 b {
+            color: orangered;
+        }
+
+        .intro1 {
+            font-size: 0.875rem;
+        }
+
+        .intro1 h3 {
+            margin-top: 0rem;
+        }
+
+        .intro1 h3 b {
+            color: orangered;
+        }
+    
+        .info-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            gap: 1rem;
+            width: 90%;
+            margin-left: 2rem;
+        }
+    
+        .info b {
+            color: orangered;
+        }
+    
+        .info h3, h4 {
+            font-size: 1rem;
+        }
+
+        /* Main Slideshow */
+        .slideshow-container {
+            width: 100%;
+            max-width: 640px; /* Typical YouTube video width */
+            margin: 1rem auto 2rem;
+            aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%; /* Ensure slides fill the container */
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain; /* Changed to contain to show full image */
+            background-color: #000; /* Optional: Add black background for padding */
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 1rem;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+            transition: background-color 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            user-select: none;
+            border-radius: 3px;
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .dot-container {
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 0.9375rem;
+            width: 0.9375rem;
+            margin: 0 0.3125rem;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        .fade {
+            animation: fade 1.5s;
+        }
+
+        @keyframes fade {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        /* Par Section */
+        .par {
+            display: flex;
+            flex-direction: row; /* Arrange .par1, .par2, .par3 horizontally */
+            justify-content: space-between;
+            gap: 1rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            align-items: flex-start; /* Align items at the top */
+        }
+
+        .par1, .par2, .par3 {
+            flex: 1; /* Equal width for each */
+            min-width: 0; /* Prevent overflow */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 400px; /* Limit max width per section */
+        }
+
+        .par1 h1, .par2 h1, .par3 h1 {
+            font-size: 0.875rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .slideshow-container-par1,
+        .slideshow-container-video {
+            width: 100%;
+            max-width: 100%; /* Fit within .par1 or .par3 */
+            aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide-par1 {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+        }
+
+        .slide-par1 img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .prev-par1, .next-par1 {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 1rem;
+            color: white;
+            font-weight: bold;
+            font-size: 0.875rem;
+            transition: background-color 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            user-select: none;
+            border-radius: 3px;
+        }
+
+        .prev-par1 {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .next-par1 {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev-par1:hover, .next-par1:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .dot-container1 {
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .dot1 {
+            cursor: pointer;
+            height: 0.9375rem;
+            width: 0.9375rem;
+            margin: 0 0.3125rem;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .par2 table {
+            width: 100%;
+            max-width: 100%; /* Fit within .par2 */
+            margin: 1rem 0;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .par2 a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .par2 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Par3 Video Slideshow */
+        .slide-video {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide-video.active {
+            display: block;
+        }
+
+        .slide-video video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover; /* Changed to cover for consistent sizing */
+        }
+
+        .prev-video, .next-video {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 1rem;
+            color: white;
+            font-weight: bold;
+            font-size: 0.875rem;
+            transition: background-color 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            user-select: none;
+            border-radius: 3px;
+        }
+
+        .prev-video {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .next-video {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev-video:hover, .next-video:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .dot-container-video {
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .dot-video {
+            cursor: pointer;
+            height: 0.9375rem;
+            width: 0.9375rem;
+            margin: 0 0.3125rem;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .topnav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .topnav a, .dropdown .dropbtn {
+                width: 100%;
+                text-align: left;
+            }
+
+            .topnav .search-container {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+
+            .dropdown-content {
+                position: static;
+                width: 100%;
+            }
+
+            .intro-container {
+                flex-direction: column;
+            }
+
+            .intro, .intro1 {
+                font-size: 1rem;
+            }
+
+            .par {
+                flex-direction: column; /* Stack .par1, .par2, .par3 vertically */
+                align-items: center;
+            }
+
+            .par1, .par2, .par3 {
+                max-width: 640px; /* Match slideshow-container width */
+                width: 100%;
+            }
+
+            .slideshow-container,
+            .slideshow-container-par1,
+            .slideshow-container-video {
+                max-width: 100%;
+                aspect-ratio: 16 / 9;
+            }
+
+            .par2 table {
+                max-width: 100%;
+            }
+
+            h1, .par1 h1, .par2 h1, .par3 h1 {
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .topnav input[type="text"] {
+                max-width: none;
+            }
+
+            .slideshow-container,
+            .slideshow-container-par1,
+            .slideshow-container-video {
+                max-width: 100%;
+            }
+
+            .prev, .next, .prev-par1, .next-par1, .prev-video, .next-video {
+                font-size: 0.875rem;
+                padding: 0.5rem;
+            }
+
+            .intro, .intro1 {
+                font-size: 0.875rem;
+            }
+
+            h1, .par1 h1, .par2 h1, .par3 h1 {
+                font-size: 0.875rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.25rem;
+            }
+
+            .par {
+                gap: 1rem;
+            }
+
+            h1, .par1 h1, .par2 h1, .par3 h1 {
+                font-size: 0.875rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        .results-container {
+            margin-top: 2rem;
+        }
+
+        .result-item {
+            padding: 1rem;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .result-item a {
+            color: orangered;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .result-item a:hover {
+            text-decoration: underline;
+        }
+
+        .no-results {
+            color: #777;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><img src="images/ELVcomputech BW icon.jpg" alt="logo"></h1>
+        <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="accounts.html">My Account</a>
+            <div class="dropdown">
+                <button class="dropbtn"><a href="breakfast.html">BREAKFAST</a><i class="fas fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="products.html"> MEATY BREAKFAST</a>
+                    <a href="products.html">NON MEATY BREAKFAST</a>
+                </div>
+            </div> 
+            <div class="dropdown">
+                <button class="dropbtn"><a href="lunch.html">LUNCH</a><i class="fas fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="tableM.html">INDEGINOUS</a>
+                    <a href="tableD.html">EXOTIC</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn"><a href="brunch.html">BRUNCH</a><i class="fas fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="gadgets.html">INDEGINOUS</a>
+                    <a href="gadgets.html">EXOTIC</a>
+                </div>
+            </div> 
+            <a href="billing.html">CHECKOUT</a>
+            <div class="search-container">
+                <form id="search-form">
+                    <input type="text" placeholder="Search.." name="search" id="search-input">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div class="results-container" id="search-results" style="display: none;"></div>
+        </div>
+        <div class="intro-container">
+            <div class="intro">
+                <h2>Welcome to <b>ELVCOMPU TECH BW,</b>
+                    <br>We are a one stop shop that provides 
+                    <br>computer technology related 
+                    <br>products, softwares, gadgets and services,
+                    <br>We also offer Point Of Sale softwares click the <b>Point of sale</b>
+                    <br> tab on the navigation bar to get more information.
+                </h2>
+            </div>
+            <div class="intro1">
+                <h3>
+                    <b>ELVCOMPU TECH BW</b> is a company that is based in Botswana and we are here to offer quality 
+                    <br>and affordable products to our dear customers 
+                    <br>Our ambition in mind is to give our clients the best products and services that are inline with the customers prefference.
+                </h3>
+            </div>
+        </div>
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="images/dektop set 3.jpg" alt="Desktop Set 3">
+            </div>
+            <div class="slide fade">
+                <img src="images/desktop set 2.jpg" alt="Desktop Set 2">
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/desktops/SMALL FACTOR/DELL/download (1).jpg" alt="Dell Small Form Factor"></a>
+            </div>
+            <div class="slide fade">
+                <img src="images/desktops/SMALL FACTOR/ACER/download (1).jpg" alt="Acer Small Form Factor">
+            </div>
+            <div class="slide fade">
+                <img src="images/monitors/HP/22 inches/download (1).jpg" alt="HP 22-inch Monitor">
+            </div>
+            <div class="slide fade">
+                <img src="images/monitors/DELL/22 inches/download (1).jpg" alt="Dell 22-inch Monitor">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)" aria-label="Previous slide">❮</a>
+            <a class="next" onclick="plusSlides(1)" aria-label="Next slide">❯</a>
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+            </div>
+        </div>
+        <div class="par">
+            <div class="par1">
+                <h1>Here is a list of image slideshows that showcases our Products</h1>
+                <div class="slideshow-container-par1">
+                    <div class="slide-par1 fade">
+                        <a href="home.html"><img src="images/desktops/SMALL FACTOR/DELL/download (1).jpg" alt="Dell Small Form Factor"></a>
+                    </div>
+                    <div class="slide-par1 fade">
+                        <a href="home.html"><img src="images/desktops/SMALL FACTOR/ACER/download (1).jpg" alt="Acer Small Form Factor"></a>
+                    </div>
+                    <div class="slide-par1 fade">
+                        <a href="products.html"><img src="images/desktops/MINI PC/ACER/download (1).jpg" alt="Acer Mini PC"></a>
+                    </div>
+                    <div class="slide-par1 fade">
+                        <a href="products.html"><img src="images/monitors/HP/22 inches/download (2).jpg" alt="HP 22-inch Monitor"></a>
+                    </div>
+                    <div class="slide-par1 fade">
+                        <a href="products.html"><img src="images/monitors/HP/22 inches/download (1).jpg" alt="HP 22-inch Monitor"></a>
+                    </div>
+                    <div class="slide-par1 fade">
+                        <a href="products.html"><img src="images/monitors/DELL/22 inches/download (1).jpg" alt="Dell 22-inch Monitor"></a>
+                    </div>
+                    <a class="prev-par1" onclick="plusSlidesPar1(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-par1" onclick="plusSlidesPar1(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-container1">
+                        <span class="dot1" onclick="currentSlidePar1(1)"></span>
+                        <span class="dot1" onclick="currentSlidePar1(2)"></span>
+                        <span class="dot1" onclick="currentSlidePar1(3)"></span>
+                        <span class="dot1" onclick="currentSlidePar1(4)"></span>
+                        <span class="dot1" onclick="currentSlidePar1(5)"></span>
+                        <span class="dot1" onclick="currentSlidePar1(6)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="par2">
+                <h1>Direct download of our softwares that you might need to install</h1>
+                <table id="software-table">
+                    <tr>
+                        <th>Software</th>
+                        <th>Supported By</th>
+                        <th>Download</th>
+                    </tr>
+                    <tr>
+                        <td>MS Office 2010</td>
+                        <td>Windows 10/11 64bit</td>
+                        <td><a href="software winrars/MS office 2010.rar">download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Winrar Setup x64</td>
+                        <td>Windows 10/11 64bit</td>
+                        <td><a href="software winrars/winrar-x64-710.exe">download</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="par3">
+                <h1>Videos of Point Of Sale softwares overview</h1>
+                <div class="slideshow-container-video">
+                    <div class="slide-video">
+                        <video src="videos/20250814_235429.mp4" controls alt="Video 1"></video>
+                    </div>
+                    <a class="prev-video" onclick="plusSlidesVideo(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-video" onclick="plusSlidesVideo(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-container-video">
+                        <span class="dot-video" onclick="currentSlideVideo(1)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-container">
+            <div class="info">
+            <h3>
+                <b>ELVCOMPU TECH BW</b> also provides other services apart from the services on our website.
+                <br>We offer services like Operating System Installation, Computer Diagnostics, Computer Repair.
+                <br>The services that are listed above can only be offered at our office,
+                <br>We can also help our customers remotely, but you can only access the remote assistance services
+                <br>if you <a href="index.html">Create An Account</a> with <b>ELVCOMPUTECH</b>.
+            </h3>
+            <br>
+            <h4>
+                <b>ELVCOMPU TECH BW</b> also offers on site services, which are <b>NETWORKING</b> and <b>POS INSTALLATION.</b>
+                <br>To enquire more about our office and on site services, you can <a href="services.html">Contact</a> our agents, 
+                    they are always ready to assist you with enquiries,quiries and complaints.
+                <br><b>We appreciate you visiting our website.</b> explore the website to view more...       
+            </h4>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Main Slideshow
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+        // Par1 Slideshow
+        let slideIndexPar1 = 1;
+        showSlidesPar1(slideIndexPar1);
+
+        function plusSlidesPar1(n) {
+            showSlidesPar1(slideIndexPar1 += n);
+        }
+
+        function currentSlidePar1(n) {
+            showSlidesPar1(slideIndexPar1 = n);
+        }
+
+        function showSlidesPar1(n) {
+            let i;
+            let slides = document.querySelectorAll(".par1 .slide-par1");
+            let dots = document.querySelectorAll(".par1 .dot1");
+            if (n > slides.length) { slideIndexPar1 = 1; }
+            if (n < 1) { slideIndexPar1 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexPar1 - 1].style.display = "block";
+            dots[slideIndexPar1 - 1].className += " active";
+        }
+
+        // Video Slideshow
+        let slideIndexVideo = 1;
+        showSlidesVideo(slideIndexVideo);
+
+        function plusSlidesVideo(n) {
+            showSlidesVideo(slideIndexVideo += n);
+        }
+
+        function currentSlideVideo(n) {
+            showSlidesVideo(slideIndexVideo = n);
+        }
+
+        function showSlidesVideo(n) {
+            let i;
+            let slides = document.querySelectorAll(".par3 .slide-video");
+            let dots = document.querySelectorAll(".par3 .dot-video");
+            if (n > slides.length) { slideIndexVideo = 1; }
+            if (n < 1) { slideIndexVideo = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+                let video = slides[i].querySelector("video");
+                if (video) video.pause();
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            slides[slideIndexVideo - 1].classList.add("active");
+            let activeVideo = slides[slideIndexVideo - 1].querySelector("video");
+            if (activeVideo) activeVideo.pause();
+            dots[slideIndexVideo - 1].classList.add("active");
+        }
+
+        window.addEventListener('resize', () => {
+            showSlides(slideIndex);
+            showSlidesPar1(slideIndexPar1);
+            showSlidesVideo(slideIndexVideo);
+        });
+
+        // Fetch CSRF token on page load
+        window.onload = fetchCsrfToken;
+
+        const softwareKeywords = [
+            'software', 'browsers', 'office suites', 'document readers',
+            'google chrome', 'mozilla firefox', 'ms office', 'libre office',
+            'adobe acrobat', 'foxit reader'
+        ];
+
+        // Handle search form submission
+        document.getElementById('search-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.style.display = 'block';
+
+            if (!query) {
+                resultsContainer.innerHTML = '<p class="no-results">Please enter a search term.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/search?search=${encodeURIComponent(query)}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+
+                if (data.redirect) {
+                    window.location.href = data.redirect;
+                    return;
+                }
+
+                if (!data.success) {
+                    resultsContainer.innerHTML = `<p class="no-results">${data.message || 'No results found.'}</p>`;
+                    return;
+                }
+
+                resultsContainer.innerHTML = '';
+                if (data.results.length === 0) {
+                    resultsContainer.innerHTML = `<p class="no-results">No results found for "${query}".</p>`;
+                    return;
+                }
+
+                data.results.forEach(result => {
+                    const resultElement = document.createElement('div');
+                    resultElement.className = 'result-item';
+                    resultElement.innerHTML = `
+                        <h3><a href="${result.url}">${result.title}</a></h3>
+                        <p>${result.description}</p>
+                    `;
+                    resultsContainer.appendChild(resultElement);
+                });
+            } catch (error) {
+                console.error('Search error:', error);
+                resultsContainer.innerHTML = '<p class="no-results">An error occurred while searching. Please try again.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
