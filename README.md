@@ -6,8 +6,11 @@ Features:
 - Responsive design, runs on localhost:5000
 - softwares zip folders and video and image zip folders are not included in here, but below are links of google drives for them
    -SOFTWARES (https://drive.google.com/file/d/1KHHL8UbfkrKtH0LQJwONG659gZURFPyZ/view)
+  
    -IMAGE (https://drive.google.com/file/d/14nlPrh5uI8UBRKAA0QFJTIXIOczf88a8/view?usp=drive_link)
+  
    -VIDEOS (https://drive.google.com/drive/folders/1qdOC6tSQIvZT4AzGeQD3jYhKLHnZjzZV?usp=drive_link).
+  
 After downloading the zip folders move them from your downloads folder to the "public" folder in the "elvcomputechbw" website folder.
 Setup:
 1. Install Node.js
