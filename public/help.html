@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELVCOMPU THECH BW</title>
+    <style>
+         h1 {
+            color: black;
+            font-size: 22px;
+        }
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        .topnav a:hover {
+            background-color: white;
+            color: black;
+        }
+        .topnav a.active {
+            background-color: orange;
+            color: white;
+        }
+        
+        .topnav .search-container {
+            float: right;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+
+        .topnav .search-container button {
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .topnav .search-container button:hover {
+            background: #ccc;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+          float: left;
+          font-size: 16px; 
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        .dropdown {
+          float: left;
+          overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+          font-size: 20px;  
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 10px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 0;
+        }
+
+        .navbar a:hover, .dropdown:hover .dropbtn {
+          background-color: white;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+        }
+
+        .dropdown-content a:hover {
+          background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>ELVCOMPU<br>TECH BW</h1>
+    <div class="topnav">
+        <a class="active" href="home.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn"><a href="products.html">OPERATING SYSTEMS</a>
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Windows OS</a>
+                <a href="#">Linux OS</a>
+                <a href="#">Mac OS</a>
+            </div>
+        </div> 
+        <div class="dropdown">
+            <button class="dropbtn"><a href="softwares.html">SOFTWARE INSTALLATION</a>
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Office Suites</a>
+                <a href="#">Document Readers</a>
+                <a href="#">Web Browsers</a>
+                <a href="#">OS Activation Keys</a>
+                <a href="#">More....</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn"><a href="gadgets.html">COMPUTER DIAGNOSTICS</a>
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Computer Scanning</a>
+                <a href="#">Software Repairs</a>
+                <a href="#">Data Recovery</a>
+            </div>
+        </div> 
+        <div class="dropdown">
+            <button class="dropbtn"><a href="help.html">COMPUTER REPAIRS</a>
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">OS Installation</a>
+                <a href="#">Software Instalation</a>
+                <a href="#">Parts Replacement</a>
+                <a href="#">Hardware Repairs</a>
+                <a href="#">More....</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
