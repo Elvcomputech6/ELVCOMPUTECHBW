@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELVCOMPU TECH BW</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+        }
+    
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 0rem; /* Increased from 1rem to 2rem */
+        }
+
+        h1 {
+            color: black;
+            font-size: 1.375rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-weight: bold;
+            font-size: 0.875rem;
+            margin: 1rem 0;
+        }
+
+        h2 span {
+            color: orangered;
+        }
+
+        h3 {
+            font-size: 0.875rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        h3 a {
+            font-size: 0.875rem;
+            font-weight: bold;
+            color: orangered;
+            text-decoration: none;
+        }
+    
+        .info h3 {
+            font-size: 0.875rem;
+            width: 90%;
+            margin-left: 1rem;
+        }
+
+        .info h3 a {
+            font-size: 0.875rem;
+        }
+
+        /* Navigation */
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .topnav a {
+            color: #f2f2f2;
+            text-align: center;
+            padding: 0.875rem 1rem;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .topnav a:hover {
+            color: orangered;
+        }
+
+        .topnav a.active {
+            background-color: orange;
+            color: white;
+        }
+
+        .topnav .search-container {
+            padding: 0.375rem 0.5rem;
+        }
+
+        .topnav input[type="text"] {
+            padding: 0.375rem;
+            font-size: 1rem;
+            border: none;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .topnav .search-container button {
+            padding: 0.5rem 1rem;
+            background: #ddd;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .topnav .search-container button:hover {
+            background: #ccc;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 1rem;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 0.875rem 1rem;
+            background-color: inherit;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: orangered;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .center .dar4, .center .dar5 {
+            grid-column: auto; /* Remove span to fit grid */
+        }
+
+        .par1, .par2, .par3, .car1, .car2, .car3, .dar1, .dar2, .dar3, .dar4, .dar5, .ear1, .ear2, .ear3, 
+        .far1, .far2, .far3 {
+            text-align: center;
+        }
+
+        .par1 h1, .par2 h1, .par3 h1, .car1 h1, .car2 h1, .car3 h1, .dar1 h1, .dar2 h1, .dar3 h1, .dar4 h1, .dar5 h1, 
+        .ear1 h1, .ear2 h1, .ear3 h1, .far1 h1, .far2 h1, .far3 h1 {
+            font-size:0.875rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .par1 h1 span, .par2 h1 span, .par3 h1 span, .car1 h1 span, .car2 h1 span, .car3 h1 span, .dar1 h1 span, 
+        .dar2 h1 span, .dar3 h1 span, .dar4 h1 span, .dar5 h1 span, .ear1 h1 span, .ear2 h1 span, .ear3 h1 span, 
+        .far1 h1 span, .far2 h1 span, .far3 h1 span {
+            display: block;
+            font-size: 0.675rem;
+            font-weight: lighter;
+        }
+        
+        .slideshow-container-par1, .slideshow-container-par2, .slideshow-container-par3,
+        .slideshow-container-car1, .slideshow-container-car2, .slideshow-container-car3,
+        .slideshow-container-dar1, .slideshow-container-dar2, .slideshow-container-dar3,
+        .slideshow-container-dar4, .slideshow-container-dar5, .slideshow-container-ear1, 
+        .slideshow-container-ear2, .slideshow-container-ear3, .slideshow-container-far1,
+        .slideshow-container-far2, .slideshow-container-far3 {
+            width: 100%;
+            max-width: 300px;
+            margin: 1rem auto 2rem;
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 218px;
+        }
+        
+        .slide-par1, .slide-par2, .slide-par3, .slide-car1, .slide-car2, .slide-car3,
+        .slide-dar1, .slide-dar2, .slide-dar3, .slide-dar4, .slide-dar5, .slide-ear1, 
+        .slide-ear2, .slide-ear3, .slide-far1, .slide-far2, .slide-far3 {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-color: #000; 
+        }
+        
+        .slide-par1 img, .slide-par2 img, .slide-par3 img, .slide-car1 img, .slide-car2 img,
+        .slide-car3 img, .slide-dar1 img, .slide-dar2 img, .slide-dar3 img, .slide-dar4 img,
+        .slide-dar5 img, .slide-ear1 img, .slide-ear2 img, .slide-ear3 img, .slide-far1 img,
+        .slide-far2 img, .slide-far3 img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain; /* Fits the entire image without cropping or distortion */
+            object-position: center; /* Center the image */
+        }
+
+        .product-details {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            max-width: 100%;
+        }
+
+        .add-to-cart {
+            position: absolute;
+            bottom: 30px;
+            right: 10px;
+            background: orangered;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart:hover {
+            background: darkorange;
+        }
+
+        .prev-par1, .next-par1, .prev-par2, .next-par2, .prev-par3, .next-par3,
+        .prev-car1, .next-car1, .prev-car2, .next-car2, .prev-car3, .next-car3,
+        .prev-dar1, .next-dar1, .prev-dar2, .next-dar2, .prev-dar3, .next-dar3,
+        .prev-dar4, .next-dar4, .prev-dar5, .next-dar5, .prev-ear1, .next-ear1, 
+        .prev-ear2, .next-ear2, .prev-ear3, .next-ear3, .prev-far1, .next-far1,
+        .prev-far2, .next-far2, .prev-far3, .next-far3 {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0.5rem;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            user-select: none;
+            border-radius: 3px;
+        }
+
+        .prev-par1, .prev-par2, .prev-par3, .prev-car1, .prev-car2, .prev-car3,
+        .prev-dar1, .prev-dar2, .prev-dar3, .prev-dar4, .prev-dar5, .prev-ear1, 
+        .prev-ear2, .prev-ear3, .prev-far1, .prev-far2, .prev-far3 {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .next-par1, .next-par2, .next-par3, .next-car1, .next-car2, .next-car3,
+        .next-dar1, .next-dar2, .next-dar3, .next-dar4, .next-dar5, .next-ear1, 
+        .next-ear2, .next-ear3, .next-far1, .next-far2, .next-far3 {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev-par1:hover, .next-par1:hover, .prev-par2:hover, .next-par2:hover,
+        .prev-par3:hover, .next-par3:hover, .prev-car1:hover, .next-car1:hover,
+        .prev-car2:hover, .next-car2:hover, .prev-car3:hover, .next-car3:hover,
+        .prev-dar1:hover, .next-dar1:hover, .prev-dar2:hover, .next-dar2:hover,
+        .prev-dar3:hover, .next-dar3:hover, .prev-dar4:hover, .next-dar4:hover,
+        .prev-dar5:hover, .next-dar5:hover, .prev-ear1:hover, .next-ear1:hover, 
+        .prev-ear2:hover, .next-ear2:hover, .prev-ear3:hover, .next-ear3:hover,
+        .prev-far1:hover, .next-far1:hover, .prev-far2:hover, .next-far2:hover, 
+        .prev-far3:hover, .next-far3:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .dot-par1-container, .dot-par2-container, .dot-par3-container,
+        .dot-car1-container, .dot-car2-container, .dot-car3-container,
+        .dot-dar1-container, .dot-dar2-container, .dot-dar3-container,
+        .dot-dar4-container, .dot-dar5-container, .dot-ear1-container,
+        .dot-ear2-container, .dot-ear3-container, .dot-far1-container,
+        .dot-far2-container, .dot-far3-container {
+            text-align: center;
+            position: absolute;
+            bottom: 0.5rem;
+            width: 100%;
+        }
+
+        .dot-par1, .dot-par2, .dot-par3, .dot-car1, .dot-car2, .dot-car3,
+        .dot-dar1, .dot-dar2, .dot-dar3, .dot-dar4, .dot-dar5, .dot-ear1,
+        .dot-ear2, .dot-ear3, .dot-far1, .dot-far2, .dot-far3 {
+            cursor: pointer;
+            height: 0.9375rem;
+            width: 0.9375rem;
+            margin: 0 0.3125rem;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot-par1:hover, .dot-par2:hover, .dot-par3:hover,
+        .dot-car1:hover, .dot-car2:hover, .dot-car3:hover, .dot-dar1:hover,
+        .dot-dar2:hover, .dot-dar3:hover, .dot-dar4:hover, .dot-dar5:hover,
+        .dot-ear1:hover, .dot-ear2:hover, .dot-ear3:hover, .dot-far1:hover,
+        .dot-far2:hover, .dot-far3:hover {
+            background-color: #717171;
+        }
+
+        .fade {
+            animation: fade 1.5s;
+        }
+
+        @keyframes fade {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        .topnav a, .dropdown .dropbtn {
+            width: 100%;
+            text-align: left;
+        }
+
+        .topnav .search-container {
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-content {
+            position: static;
+            width: 100%;
+        }
+
+        .par, .intro, .inter, .lower, .center {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; /* Increased from 1.5rem to 2rem for more noticeable gaps */
+            justify-items: center;
+        }
+        
+        .slideshow-container-par1, .slideshow-container-par2, .slideshow-container-par3,
+        .slideshow-container-car1, .slideshow-container-car2, .slideshow-container-car3,
+        .slideshow-container-dar1, .slideshow-container-dar2, .slideshow-container-dar3,
+        .slideshow-container-dar4, .slideshow-container-dar5, .slideshow-container-ear1,
+        .slideshow-container-ear2, .slideshow-container-ear3, .slideshow-container-far1,
+        .slideshow-container-far2, .slideshow-container-far3 {
+            width: 100%;
+            max-width: 350px;
+            margin: 0.5rem auto; /* Add small vertical margin */
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 4 / 3;
+        }
+        
+        @media (max-width: 1024px) {
+            .par, .intro, .inter, .lower, .center {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .par, .intro, .inter, .lower, .center {
+                grid-template-columns: 1fr;
+                gap: 2rem; /* Ensure gap is consistent for single-column layout */
+            }
+        }
+        .slideshow-container-par1, .slideshow-container-par2, .slideshow-container-par3,
+        .slideshow-container-car1, .slideshow-container-car2, .slideshow-container-car3,
+        .slideshow-container-dar1, .slideshow-container-dar2, .slideshow-container-dar3,
+        .slideshow-container-dar4, .slideshow-container-dar5, .slideshow-container-ear1, 
+        .slideshow-container-ear2, .slideshow-container-ear3, .slideshow-container-far1,
+        .slideshow-container-far2, .slideshow-container-far3 {
+            max-width: 100%;
+            aspect-ratio: 4 / 3;
+        }
+        
+        @media (max-width: 600px) {
+            .slideshow-container-par1, .slideshow-container-par2, .slideshow-container-par3,
+            .slideshow-container-car1, .slideshow-container-car2, .slideshow-container-car3,
+            .slideshow-container-dar1, .slideshow-container-dar2, .slideshow-container-dar3,
+            .slideshow-container-dar4, .slideshow-container-dar5, .slideshow-container-ear1, 
+            .slideshow-container-ear2, .slideshow-container-ear3, .slideshow-container-far1,
+            .slideshow-container-far2, .slideshow-container-far3 {
+                aspect-ratio: 4 / 3;
+            }
+            .prev-par1, .next-par1, .prev-par2, .next-par2, .prev-par3, .next-par3,
+            .prev-car1, .next-car1, .prev-car2, .next-car2, .prev-car3, .next-car3,
+            .prev-dar1, .next-dar1, .prev-dar2, .next-dar2, .prev-dar3, .next-dar3,
+            .prev-dar4, .next-dar4, .prev-dar5, .next-dar5, .prev-ear1, .next-ear1, 
+            .prev-ear2, .next-ear2, .prev-ear3, .next-ear3, .prev-far1, .next-far1,
+            .prev-far2, .next-far2, .prev-far3, .next-far3 {
+                font-size: 0.75rem;
+                padding: 0.25rem;
+            }
+            .product-details, .add-to-cart {
+                font-size: 0.65rem;
+                padding: 2px 5px;
+            }
+        }
+        .results-container {
+            margin-top: 2rem;
+        }
+        .result-item {
+            padding: 1rem;
+            border-bottom: 1px solid #ccc;
+        }
+        .result-item a {
+            color: orangered;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .result-item a:hover {
+            text-decoration: underline;
+        }
+        .no-results {
+            color: #777;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ELVCOMPU<br>TECH BW</h1>
+        <div class="topnav">
+            <a class="active" href="home.html">Home</a>
+         
+            <a href="cart.html">Cart</a>
+            <div class="search-container">
+                <form id="search-form">
+                    <input type="text" placeholder="Search.." name="search" id="search-input">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div class="results-container" id="search-results" style="display: none;"></div>
+        </div>
+        <h2><b>WELCOME TO <span>ELVCOMPU TECH BW</span> ONLINE SHOP</b>
+            <br> This is a section where you will get to see and
+            <br> buy the most affordable Computer, Laptops, Printers,Keyboards and all types of Mouse.
+        </h2>
+        <h3>WE HAVE A WIDE RANGE OF PRODUCTS THAT ARE
+            <br> RECOGNISED WORLD WIDE AND HAVE BEEN RELIABLE AND TRUSTED BY 
+            <br>INDIVIDUALS, ENTREPRENEURS AND COMPANIES
+            <br>We have products ranging from the cheapest to the most expensive ones
+            <br><a href="#">JUST KEEP SCROLLING FOR MORE</a>
+        </h3>
+        <div class="par">
+            <div class="par1">
+                <h1>MONITORS <span>19 INCHES</span></h1>
+                <div class="slideshow-container-par1">
+                      <div class="slide fade">
+                          <img class="img" src="images/monitors/ACER/19 inches/download (1).jpg" alt="Acer 19-inch Monitor">
+                          <div class="product-details">Acer 19" LED Monitor, 60Hz, P 699.99</div>
+                          <button class="add-to-cart" onclick="addToCart('Acer 19\ LED Monitor', 699.99, 'images/monitors/ACER/19 inches/download (1).jpg')">Add to Cart</button>
+                      </div>
+                      <div class="slide fade">
+                          <img class="img" src="images/monitors/DELL/19 inches/download (3).jpg" alt="Dell 19-inch Monitor">
+                          <div class="product-details">Dell 19" LCD Monitor, 75Hz, P 799.99</div>
+                          <button class="add-to-cart" onclick="addToCart('Dell 19\ LCD Monitor', 799.99, 'images/monitors/DELL/19 inches/download (3).jpg')">Add to Cart</button>
+                      </div>
+                      <div class="slide fade">
+                          <img class="img" src="images/monitors/HP/19 inches/download (2).jpg" alt="HP 19-inch Monitor">
+                          <div class="product-details">HP 19" IPS Monitor, 60Hz, P 599.99</div>
+                          <button class="add-to-cart" onclick="addToCart('HP 19\ IPS Monitor', 599.99, 'images/monitors/HP/19 inches/download (2).jpg')">Add to Cart</button>
+                      </div>
+                      <div class="slide fade">
+                          <img class="img" src="images/monitors/LENOVO/19 inches/download (6).jpg" alt="Lenovo 19-inch Monitor">
+                          <div class="product-details">Lenovo 19" LED Monitor, 60Hz, P 699.99</div>
+                          <button class="add-to-cart" onclick="addToCart('Lenovo 19\ LED Monitor', 699.99, 'images/monitors/LENOVO/19 inches/download (6).jpg')">Add to Cart</button>
+                      </div>
+                      <div class="slide fade">
+                          <img class="img" src="images/monitors/ACER/19 inches/download (1).jpg" alt="Acer 19-inch Monitor">
+                          <div class="product-details">Acer 19" TN Monitor, 60Hz, P 599.99</div>
+                          <button class="add-to-cart" onclick="addToCart('Acer 19\ TN Monitor', 599.99, 'images/monitors/ACER/19 inches/download (1).jpg')">Add to Cart</button>
+                      </div>
+                      <div class="slide fade">
+                          <img class="img" src="images/monitors/DELL/19 inches/download.jpg" alt="Dell 19-inch Monitor">
+                          <div class="product-details">Dell 19" LED Monitor, 60Hz, P 699.99</div>
+                          <button class="add-to-cart" onclick="addToCart('Dell 19\ LED Monitor', 699.99, 'images/monitors/DELL/19 inches/download.jpg')">Add to Cart</button>
+                      </div>
+                      <a class="prev-par1" onclick="plusSlidesPar1(-1)" aria-label="Previous slide">❮</a>
+                      <a class="next-par1" onclick="plusSlidesPar1(1)" aria-label="Next slide">❯</a>
+                      <div class="dot-par1-container">
+                          <span class="dot-par1" onclick="currentSlidePar1(1)"></span>
+                          <span class="dot-par1" onclick="currentSlidePar1(2)"></span>
+                          <span class="dot-par1" onclick="currentSlidePar1(3)"></span>
+                          <span class="dot-par1" onclick="currentSlidePar1(4)"></span>
+                          <span class="dot-par1" onclick="currentSlidePar1(5)"></span>
+                          <span class="dot-par1" onclick="currentSlidePar1(6)"></span>
+                      </div>
+                </div>
+            </div>
+
+            <div class="par2">
+                <h1> <br><span>22 INCHES</span></h1>
+                <div class="slideshow-container-par2">
+                    <div class="slide fade">
+                        <img class="img" src="images/monitors/ACER/22 inches/download.jpg" alt="Acer 22-inch Monitor">
+                        <div class="product-details">Acer 22" IPS Monitor, 75Hz, P 899.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer 22\ IPS Monitor', 899.99, 'images/monitors/ACER/22 inches/download.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/monitors/ACER/22 inches/download (6).jpg" alt="Acer 22-inch Monitor">
+                        <div class="product-details">Acer 22" LED Monitor, 60Hz, P 999.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer 22\ LED Monitor', 999.99, 'images/monitors/ACER/22 inches/download (6).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/monitors/DELL/22 inches/images.jpg" alt="Dell 22-inch Monitor">
+                        <div class="product-details">Dell 22" IPS Monitor, 75Hz, P 899.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell 22\ IPS Monitor', 899.99, 'images/monitors/DELL/22 inches/images.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/monitors/DELL/22 inches/download.jpg" alt="Dell 22-inch Monitor">
+                        <div class="product-details">Dell 22" LED Monitor, 60Hz, P 999.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell 22\ LED Monitor', 999.99, 'images/monitors/DELL/22 inches/download.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/monitors/HP/22 inches/download (2).jpg" alt="HP 22-inch Monitor">
+                        <div class="product-details">HP 22" IPS Monitor, 60Hz, P 799.99</div>
+                        <button class="add-to-cart" onclick="addToCart('HP 22\ IPS Monitor', 799.99, 'images/monitors/HP/22 inches/download (2).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/monitors/LENOVO/22 inches/download (3).jpg" alt="Lenovo 22-inch Monitor">
+                        <div class="product-details">Lenovo 22" LED Monitor, 75Hz, P 899.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo 22\ LED Monitor', 899.99, 'images/monitors/LENOVO/22 inches/download (3).jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-par2" onclick="plusSlidesPar2(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-par2" onclick="plusSlidesPar2(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-par2-container">
+                        <span class="dot-par2" onclick="currentSlidePar2(1)"></span>
+                        <span class="dot-par2" onclick="currentSlidePar2(2)"></span>
+                        <span class="dot-par2" onclick="currentSlidePar2(3)"></span>
+                        <span class="dot-par2" onclick="currentSlidePar2(4)"></span>
+                        <span class="dot-par2" onclick="currentSlidePar2(5)"></span>
+                        <span class="dot-par2" onclick="currentSlidePar2(6)"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="par3">
+                <h1> <br><span>24 INCHES</span></h1>
+                <div class="slideshow-container-par3">
+                    <div class="slide fade">
+                        <img class="img" src="images/monitors/LENOVO/22 inches/download (2).jpg" alt="Lenovo 24-inch Monitor">
+                        <div class="product-details">Lenovo 24" IPS Monitor, 75Hz, P1199.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo 24\ IPS Monitor', 1199.99, 'images/monitors/LENOVO/22 inches/download (2).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/monitors/HP/22 inches/download (4).jpg" alt="HP 24-inch Monitor">
+                        <div class="product-details">HP 24" LED Monitor, 60Hz, P 1399.99</div>
+                        <button class="add-to-cart" onclick="addToCart('HP 24\ LED Monitor', 1399.99, 'images/monitors/HP/22 inches/download (4).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/monitors/HP/22 inches/download (3).jpg" alt="HP 24-inch Monitor">
+                        <div class="product-details">HP 24" IPS Monitor, 75Hz, P 1099.99</div>
+                        <button class="add-to-cart" onclick="addToCart('HP 24\ IPS Monitor', 1099.99, 'images/monitors/HP/22 inches/download (3).jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-par3" onclick="plusSlidesPar3(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-par3" onclick="plusSlidesPar3(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-par3-container">
+                        <span class="dot-par3" onclick="currentSlidePar3(1)"></span>
+                        <span class="dot-par3" onclick="currentSlidePar3(2)"></span>
+                        <span class="dot-par3" onclick="currentSlidePar3(3)"></span>
+                    </div>
+                </div>
+             </div>
+        </div>
+        <div class="intro">
+            <div class="car1">
+                <h1>DESKTOPS <span>MINI PC</span></h1>
+                <div class="slideshow-container-car1">
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/MINI PC/ACER/download (3).jpg" alt="Acer Mini Pc">
+                        <div class="product-details">Acer Mini Pc, i3 3rd gen, P 1699.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer i3 3rd gen\ Mini pc', 1699.99, 'images/desktops/MINI PC/ACER/download (3).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/MINI PC/DELL/images.jpg" alt="Dell Mini Pc">
+                        <div class="product-details">Dell Mini Pc, i3 7th gen, P 1799.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell i3 7th gen\ Mini pc', 1799.99, 'images/desktops/MINI PC/DELL/images.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/MINI PC/DELL/download (4).jpg" alt="Dell 22-inch Monitor">
+                        <div class="product-details">Dell Mini Pc, i5 3rd gen, P 2199.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell i5 3rd gen\ Mini Pc', 2199.99, 'images/monitors/DELL/22 inches/download (4).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/MINI PC/HP/download.jpg" alt="Dell 22-inch Monitor">
+                        <div class="product-details">Dell Mini Pc, i5 8th gen, P 2799.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell i5 8th gen\ Mini Pc', 2499.99, 'images/monitors/DELL/22 inches/download.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/MINI PC/HP/download (5).jpg" alt="HP 22-inch Monitor">
+                        <div class="product-details">HP Mini Pc, i5 4th gen, P 2399.99</div>
+                        <button class="add-to-cart" onclick="addToCart('HP i5 4th gen\ Mini Pc', 2399.99, 'images/monitors/HP/22 inches/download (5).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/MINI PC/LENOVO/download (5).jpg" alt="Lenovo Mini Pc">
+                        <div class="product-details">Lenovo Mini Pc, i5 3rd gen, P 2199.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo i5 3rd gen\ Mini Pc', 2199.99, 'images/desktops/MINI PC/LENOVO/download (5).jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-car1" onclick="plusSlidesCar1(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-car1" onclick="plusSlidesCar1(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-car1-container">
+                        <span class="dot-car1" onclick="currentSlideCar1(1)"></span>
+                        <span class="dot-car1" onclick="currentSlideCar1(2)"></span>
+                        <span class="dot-car1" onclick="currentSlideCar1(3)"></span>
+                        <span class="dot-car1" onclick="currentSlideCar1(4)"></span>
+                        <span class="dot-car1" onclick="currentSlideCar1(5)"></span>
+                        <span class="dot-car1" onclick="currentSlideCar1(6)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="car2">
+                <h1><br><span>SMALL FORM FACTOR</span></h1>
+                <div class="slideshow-container-car2">
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/SMALL FACTOR/DELL/download (1).jpg" alt="Dell Small Form Factor">
+                        <div class="product-details">Dell SFF, Intel i5 3rd gen, P 1499.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell i5 3rd gen\SFF', 1499.99, 'images/desktops/SMALL FACTOR/DELL/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/SMALL FACTOR/ACER/download (1).jpg" alt="Acer Small Form Factor">
+                        <div class="product-details">Acer SFF, Intel i3 3rd gen, P 1199.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer i3 3rd gen\SFF', 1199.99, 'images/desktops/SMALL FACTOR/ACER/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/SMALL FACTOR/HP/download (1).jpg" alt="HP Small Form Factor">
+                        <div class="product-details">HP SFF, Intel i5 7th gen, P 2399.99</div>
+                        <button class="add-to-cart" onclick="addToCart('HP i5 7th gen\SFF', 2399.99, 'images/desktops/SMALL FACTOR/HP/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/SMALL FACTOR/LENOVO/download (4).jpg" alt="Lenovo Small Form Factor">
+                        <div class="product-details">Lenovo SFF, Intel i3 7th gen, P 1599.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo i3 7th gen SFF', 1599.99, 'images/desktops/SMALL FACTOR/LENOVO/download (4).jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-car2" onclick="plusSlidesCar2(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-car2" onclick="plusSlidesCar2(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-car2-container">
+                        <span class="dot-car2" onclick="currentSlideCar2(1)"></span>
+                        <span class="dot-car2" onclick="currentSlideCar2(2)"></span>
+                        <span class="dot-car2" onclick="currentSlideCar2(3)"></span>
+                        <span class="dot-car2" onclick="currentSlideCar2(4)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="car3">
+                <h1><br><span>TOWER</span></h1>
+                <div class="slideshow-container-car3">
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/TOWER/DELL/download (6).jpg" alt="Dell Tower">
+                        <div class="product-details">Dell Tower, Intel i7 4th gen, P 2999.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell i7 4th gen\Tower', 2999.99, 'images/desktops/TOWER/DELL/download (6).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/TOWER/HP/download (6).jpg" alt="HP Tower">
+                        <div class="product-details">HP Tower, Intel i5 7th gen, P 2499.99</div>
+                        <button class="add-to-cart" onclick="addToCart('HP i5 7th gen\Tower', 2499.99, 'images/desktops/TOWER/HP/download (6).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/desktops/TOWER/LENOVO/download (2).jpg" alt="Lenovo Tower">
+                        <div class="product-details">Lenovo Tower, Intel i7 7th gen, P 4599.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo i7 7th gen\Tower', 4599.99, 'images/desktops/TOWER/LENOVO/download (2).jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-car3" onclick="plusSlidesCar3(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-car3" onclick="plusSlidesCar3(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-car3-container">
+                        <span class="dot-car3" onclick="currentSlideCar3(1)"></span>
+                        <span class="dot-car3" onclick="currentSlideCar3(2)"></span>
+                        <span class="dot-car3" onclick="currentSlideCar3(3)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center">
+            <div class="dar1">
+                <h1>LAPTOPS<span> INTEL CELERON</span></h1>
+                <div class="slideshow-container-dar1">
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Dell/Dell Celeron, 256GB SSD.jpg" alt="Dell Celeron Laptop">
+                        <div class="product-details">Dell Celeron, 4GB RAM, P 299.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell Celeron Laptop', 299.99, 'images/Laptops/Dell/Dell Celeron, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Acer/Acer Celeron, 256GB SSD.jpg" alt="Acer Celeron Laptop">
+                        <div class="product-details">Acer Celeron, 4GB RAM, P 289.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer Celeron Laptop', 289.99, 'images/Laptops/Acer/Acer Celeron, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Hp/Hp Celeron, 256GB SSD.jpg" alt="HP Celeron Laptop">
+                        <div class="product-details">HP Celeron, 4GB RAM, P 309.99</div>
+                        <button class="add-to-cart" onclick="addToCart('HP Celeron Laptop', 309.99, 'images/Laptops/Hp/Hp Celeron, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Lenovo/Lenovo Celeron, 256GB SSD.jpg" alt="Lenovo Celeron Laptop">
+                        <div class="product-details">Lenovo Celeron, 4GB RAM, P 294.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo Celeron Laptop', 294.99, 'images/Laptops/Lenovo/Lenovo Celeron, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-dar1" onclick="plusSlidesDar1(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-dar1" onclick="plusSlidesDar1(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-dar1-container">
+                        <span class="dot-dar1" onclick="currentSlideDar1(1)"></span>
+                        <span class="dot-dar1" onclick="currentSlideDar1(2)"></span>
+                        <span class="dot-dar1" onclick="currentSlideDar1(3)"></span>
+                        <span class="dot-dar1" onclick="currentSlideDar1(4)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="dar2">
+                <h1> <br><span>INTEL i3</span></h1>
+                <div class="slideshow-container-dar2">
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Dell/Dell i3, 256GB SSD.jpg" alt="Dell i3 Laptop">
+                        <div class="product-details">Dell i3 Laptop, 8GB RAM, P 399.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell i3 Laptop', 399.99, 'images/Laptops/Dell/Dell i3, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Acer/Acer i3, 256GB SSD.jpg" alt="Acer i3 Laptop">
+                        <div class="product-details">Acer i3 Laptop, 8GB RAM, P 389.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer i3 Laptop', 389.99, 'images/Laptops/Acer/Acer i3, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Hp/Hp i3, 256GB SSD.jpg" alt="HP i3 Laptop">
+                        <div class="product-details">HP i3 Laptop, 8GB RAM, P 409.99</div>
+                        <button class="add-to-cart" onclick="addToCart('HP i3 Laptop', 409.99, 'images/Laptops/Hp/Hp i3, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Lenovo/Lenovo i3, 256GB SSD.jpg" alt="Lenovo i3 Laptop">
+                        <div class="product-details">Lenovo i3 Laptop, 8GB RAM, P 394.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo i3 Laptop', 394.99, 'images/Laptops/Lenovo/Lenovo i3, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-dar2" onclick="plusSlidesDar2(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-dar2" onclick="plusSlidesDar2(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-dar2-container">
+                        <span class="dot-dar2" onclick="currentSlideDar2(1)"></span>
+                        <span class="dot-dar2" onclick="currentSlideDar2(2)"></span>
+                        <span class="dot-dar2" onclick="currentSlideDar2(3)"></span>
+                        <span class="dot-dar2" onclick="currentSlideDar2(4)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="dar3">
+                <h1> <br><span>INTEL i5</span></h1>
+                <div class="slideshow-container-dar3">
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Acer/Acer i5, 256GB SSD.jpg" alt="Acer i5 Laptop">
+                        <div class="product-details">Acer i5 Laptop, 8GB RAM, P 499.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer i5 Laptop', 499.99, 'images/Laptops/Acer/Acer i5, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Dell/Dell i5, 256GB SSD.jpg" alt="HP i5 Laptop">
+                        <div class="product-details">HP i5 Laptop, 8GB RAM, P 509.99</div>
+                        <button class="add-to-cart" onclick="addToCart('HP i5 Laptop', 509.99, 'images/Laptops/Dell/Dell i5, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Dell/Dell i5, 256GB SSD.jpg" alt="Dell i5 Laptop">
+                        <div class="product-details">Dell i5 Laptop, 8GB RAM, P 519.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell i5 Laptop', 519.99, 'images/Laptops/Dell/Dell i5, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Lenovo/Lenovo i5, 256GB SSD.jpg" alt="Lenovo i5 Laptop">
+                        <div class="product-details">Lenovo i5 Laptop, 8GB RAM, P 519.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo i5 Laptop', 519.99, 'images/Laptops/Lenovo/Lenovo i5, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-dar3" onclick="plusSlidesDar3(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-dar3" onclick="plusSlidesDar3(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-dar3-container">
+                        <span class="dot-dar3" onclick="currentSlideDar3(1)"></span>
+                        <span class="dot-dar3" onclick="currentSlideDar3(2)"></span>
+                        <span class="dot-dar3" onclick="currentSlideDar3(3)"></span>
+                        <span class="dot-dar3" onclick="currentSlideDar3(4)"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dar4">
+                <h1> <br><span>INTEL i7</span></h1>
+                <div class="slideshow-container-dar4">
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Dell/Dell i7, 256GB SSD.jpg" alt="Dell i7 Laptop">
+                        <div class="product-details">Dell i7 Laptop, 16GB RAM, P 699.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell i7 Laptop', 699.99, 'images/Laptops/Dell/Dell i7, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Acer/Acer i7, 256GB SSD.jpg" alt="Acer i7 Laptop">
+                        <div class="product-details">Acer i7 Laptop, 16GB RAM, P 689.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer i7 Laptop', 689.99, 'images/Laptops/Acer/Acer i7, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Hp/Hp i7, 256GB SSD.jpg" alt="HP i7 Laptop">
+                        <div class="product-details">HP i7 Laptop, 16GB RAM, P 709.99</div>
+                        <button class="add-to-cart" onclick="addToCart('HP i7 Laptop', 709.99, 'images/Laptops/Hp/Hp i7, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Lenovo/Lenovo i7, 256GB SSD.jpg" alt="Lenovo i7 Laptop">
+                        <div class="product-details">Lenovo i7 Laptop, 16GB RAM, P 694.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo i7 Laptop', 694.99, 'images/Laptops/Lenovo/Lenovo i7, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-dar4" onclick="plusSlidesDar4(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-dar4" onclick="plusSlidesDar4(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-dar4-container">
+                        <span class="dot-dar4" onclick="currentSlideDar4(1)"></span>
+                        <span class="dot-dar4" onclick="currentSlideDar4(2)"></span>
+                        <span class="dot-dar4" onclick="currentSlideDar4(3)"></span>
+                        <span class="dot-dar4" onclick="currentSlideDar4(4)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="dar5">
+                <h1> <br><span>INTEL i9</span></h1>
+                <div class="slideshow-container-dar5">
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Dell/Dell i9, 256GB SSD.jpg" alt="Dell i9 Laptop">
+                        <div class="product-details">Dell i9 Laptop, 32GB RAM, P 999.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell i9 Laptop', 999.99, 'images/Laptops/Dell/Dell i9, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Acer/Acer i9, 256GB SSD.jpg" alt="Acer i9 Laptop">
+                        <div class="product-details">Acer i9 Laptop, 32GB RAM, P 989.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer i9 Laptop', 989.99, 'images/Laptops/Acer/Acer i9, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Hp/Hp i9, 256GB SSD.jpg" alt="HP i9 Laptop">
+                        <div class="product-details">HP i9 Laptop, 32GB RAM, P 1009.99</div>
+                        <button class="add-to-cart" onclick="addToCart('HP i9 Laptop', 1009.99, 'images/Laptops/Hp/Hp i9, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/Laptops/Acer/Acer i9, 256GB SSD.jpg" alt="Lenovo i9 Laptop">
+                        <div class="product-details">Lenovo i9 Laptop, 32GB RAM, P 994.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo i9 Laptop', 994.99, 'images/Laptops/Acer/Acer i9, 256GB SSD.jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-dar5" onclick="plusSlidesDar5(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-dar5" onclick="plusSlidesDar5(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-dar5-container">
+                        <span class="dot-dar5" onclick="currentSlideDar5(1)"></span>
+                        <span class="dot-dar5" onclick="currentSlideDar5(2)"></span>
+                        <span class="dot-dar5" onclick="currentSlideDar5(3)"></span>
+                        <span class="dot-dar5" onclick="currentSlideDar5(4)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="inter">
+            <div class="ear1">
+                <h1>KEYBOARDS <br><span>OFFICE</span></h1>
+                <div class="slideshow-container-ear1">
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/DELL/WIRED/download (3).jpg" alt="Dell Office keyboard">
+                        <div class="product-details">Dell office, P 80.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell Office keyboard',80.00, 'images/keyboards/DELL/WIRED/download (3).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/HP/WIRED/download (4).jpg" alt="HP Office keyboard">
+                        <div class="product-details">HP office, P 100.00</div>
+                        <button class="add-to-cart" onclick="addToCart('HP Office keyboard', 100.00, 'images/keyboards/HP/WIRED/download (4).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/DELL/WIRED/download (1).jpg" alt="Dell Office keyboard">
+                        <div class="product-details">Dell office, P 100.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell Office keyboard',100.00, 'images/keyboards/DELL/WIRED/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/LENOVO/WIRED/download (1).jpg" alt="Lenovo Office keyboard">
+                        <div class="product-details">Lenovo office, P 100.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo Office keyboard', 100.00, 'images/keyboards/LENOVO/WIRED/download (1).jpg')">Add to Cart</button>
+                    </div>
+
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/ACER/WIRED/download (1).jpg" alt="Acer Office keyboard">
+                        <div class="product-details">Acer office, P 120.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer Office keyboard',120.00, 'images/keyboards/ACER/WIRED/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/LENOVO/WIRED/download (3).jpg" alt="Lenovo Office keyboard">
+                        <div class="product-details">Lenovo office, P 120.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo Office keyboard', 120.00, 'images/keyboards/LENOVO/WIRED/download (3).jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-ear1" onclick="plusSlidesEar1(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-ear1" onclick="plusSlidesEar1(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-ear1-container">
+                        <span class="dot-ear1" onclick="currentSlideEar1(1)"></span>
+                        <span class="dot-ear1" onclick="currentSlideEar1(2)"></span>
+                        <span class="dot-ear1" onclick="currentSlideEar1(3)"></span>
+                        <span class="dot-ear1" onclick="currentSlideEar1(4)"></span>
+                        <span class="dot-ear1" onclick="currentSlideEar1(5)"></span>
+                        <span class="dot-ear1" onclick="currentSlideEar1(6)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="ear2">
+                <h1> <br><span>OFFICE COMBO</span></h1>
+                <div class="slideshow-container-ear2">
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/DELL/WIRELESS COMBO/download (1).jpg" alt="Dell Gaming keyboard">
+                        <div class="product-details">Dell gaming, P 140.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell Gaming keyboard',80.00, 'images/keyboards/DELL/WIRED/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/HP/WIRELESS COMBO/download (1).jpg" alt="HP Gaming keyboard">
+                        <div class="product-details">HP gaming, P 140.00</div>
+                        <button class="add-to-cart" onclick="addToCart('HP Gaming keyboard', 140.00, 'images/keyboards/HP/WIRED/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/DELL/WIRELESS COMBO/download (1).jpg" alt="Dell Gaming keyboard">
+                        <div class="product-details">Dell gaming, P 130.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell Gaming keyboard',130.00, 'images/keyboards/DELL/WIRED/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/HP/WIRELESS COMBO/download (1).jpg" alt="HP Gaming keyboard">
+                        <div class="product-details">HP gaming, P 130.00</div>
+                        <button class="add-to-cart" onclick="addToCart('HP Gaming keyboard', 130.00, 'images/keyboards/HP/WIRED/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/ACER/WIRELESS COMBO/download (1).jpg" alt="Acer Gaming keyboard">
+                        <div class="product-details">Acer gaming, P 140.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer Gaming keyboard',140.00, 'images/keyboards/DELL/WIRED/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/LENOVO/WIRELESS COMBO/download (1).jpg" alt="Lenovo Gaming keyboard">
+                        <div class="product-details">Lenovo gaming, P 130.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo Gaming keyboard', 130.00, 'images/keyboards/HP/WIRED/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-ear2" onclick="plusSlidesEar2(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-ear2" onclick="plusSlidesEar2(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-ear2-container">
+                        <span class="dot-ear2" onclick="currentSlideEar2(1)"></span>
+                        <span class="dot-ear2" onclick="currentSlideEar2(2)"></span>
+                        <span class="dot-ear2" onclick="currentSlideEar2(3)"></span>
+                        <span class="dot-ear2" onclick="currentSlideEar2(4)"></span>
+                        <span class="dot-ear2" onclick="currentSlideEar2(5)"></span>
+                        <span class="dot-ear2" onclick="currentSlideEar2(6)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="ear3">
+                <h1> <br><span>GAMING</span></h1>
+                <div class="slideshow-container-ear3">
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/DELL/LED/download (1).jpg" alt="Dell Led keyboard">
+                        <div class="product-details">DELL Led, P 160.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell Led keyboard', 180.00, 'images/keyboards/DELL/LED/download (2).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/HP/LED/download (2).jpg" alt="HP Led keyboard">
+                        <div class="product-details">HP Led, P 160.00</div>
+                        <button class="add-to-cart" onclick="addToCart('HP Led keyboard', 180.00, 'images/keyboards/HP/LED/download (2).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/DELL/LED/download (2).jpg" alt="Dell Led keyboard">
+                        <div class="product-details">DELL Led, P 180.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell Led keyboard', 180.00, 'images/keyboards/DELL/LED/download (2).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/HP/LED/download (1).jpg" alt="HP Led keyboard">
+                        <div class="product-details">HP Led, P 180.00</div>
+                        <button class="add-to-cart" onclick="addToCart('HP Led keyboard', 180.00, 'images/keyboards/HP/LED/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/LENOVO/LED/download (3).jpg" alt="Lenovo Led keyboard">
+                        <div class="product-details">Lenovo Led, P 200.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo Led keyboard', 200.00, 'images/keyboards/LENOVO/LED/download (3).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/keyboards/LENOVO/LED/download (1).png" alt="Lenovo Led keyboard">
+                        <div class="product-details">Lenovo Led, P 200.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo Led keyboard', 200.00, 'images/keyboards/LENOVO/LED/download (1).png')">Add to Cart</button>
+                    </div>
+                    <a class="prev-ear3" onclick="plusSlidesEar3(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-ear3" onclick="plusSlidesEar3(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-dar3-container">
+                        <span class="dot-ear3" onclick="currentSlideEar3(1)"></span>
+                        <span class="dot-ear3" onclick="currentSlideEar3(2)"></span>
+                        <span class="dot-ear3" onclick="currentSlideEar3(3)"></span>
+                        <span class="dot-ear3" onclick="currentSlideEar3(4)"></span>
+                        <span class="dot-ear3" onclick="currentSlideEar3(5)"></span>
+                        <span class="dot-ear3" onclick="currentSlideEar3(6)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lower">
+            <div class="far1">
+                  <h1>MOUSE <span>OFFICE</span></h1>
+                  <div class="slideshow-container-far1">
+                      <div class="slide fade">
+                          <img class="img" src="images/mice/ACER/WIRED/download (4).jpg" alt="Acer Office Mouse">
+                          <div class="product-details">Acer Office , P 50.00</div>
+                          <button class="add-to-cart" onclick="addToCart('Acer Office Mouse', 50.00, 'images/mice/ACER/WIRED/download (4).jpg')">Add to Cart</button>
+                      </div>
+                      <div class="slide fade">
+                          <img class="img" src="images/mice/ACER/WIRED/download.jpg" alt="Acer Office Mouse">
+                          <div class="product-details">Acer Office , P 60.00</div>
+                          <button class="add-to-cart" onclick="addToCart('Acer Office Mouse', 60.00, 'images/mice/ACER/WIRED/download.jpg')">Add to Cart</button>
+                      </div>
+                      <div class="slide fade">
+                          <img class="img" src="images/mice/ACER/WIRED/images.jpg" alt="Acer Office Mouse">
+                          <div class="product-details">Acer Office , P 80.00</div>
+                          <button class="add-to-cart" onclick="addToCart('Acer Office Mouse', 80.00, 'images/mice/ACER/WIRED/images.jpg')">Add to Cart</button>
+                      </div>
+                      <a class="prev-far1" onclick="plusSlidesFar1(-1)" aria-label="Previous slide">❮</a>
+                      <a class="next-far1" onclick="plusSlidesFar1(1)" aria-label="Next slide">❯</a>
+                      <div class="dot-far1-container">
+                          <span class="dot-far1" onclick="currentSlideFar1(1)"></span>
+                          <span class="dot-far1" onclick="currentSlideFar1(2)"></span>
+                          <span class="dot-far1" onclick="currentSlideFar1(3)"></span>
+                      </div>
+                  </div>
+            </div>
+            <div class="far2">
+                <h1> <br><span>GAMING</span></h1>
+                <div class="slideshow-container-far2">
+                    <div class="slide fade">
+                        <img class="img" src="images/mice/ACER/LED/images (1).jpg" alt="Acer Gaming mouse">
+                        <div class="product-details">Acer Gaming P 100.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Acer Gaming mouse', 100.00, 'images/mice/ACER/LED/images (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/mice/LENOVO/LED/images (1).jpg" alt="Lenovo Gaming mouse">
+                        <div class="product-details">Lenovo Gaming P 80.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo Gaming mouse', 80.00, 'images/mice/LENOVO/LED/images (1).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/mice/HP/LED/images (1).jpg" alt="Hp Gaming mouse">
+                        <div class="product-details">Hp Gaming P 120.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Hp Gaming mouse', 120.00, 'images/mice/HP/LED/images (1).jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-far2" onclick="plusSlidesFar2(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-far2" onclick="plusSlidesFar2(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-far2-container">
+                        <span class="dot-far2" onclick="currentSlideFar2(1)"></span>
+                        <span class="dot-far2" onclick="currentSlideFar2(2)"></span>
+                        <span class="dot-far2" onclick="currentSlideFar2(3)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="far3">
+                <h1> <br><span>Wireless</span></h1>
+                <div class="slideshow-container-far3">
+                    <div class="slide fade">
+                        <img class="img" src="images/mice/DELL/WIRELESS/download (4).jpg" alt="Dell wireless mouse">
+                        <div class="product-details">Dell wireless P 50.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Dell wireless', 299.99, 'images/mice/DELL/WIRELESS/download (4).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/mice/HP/WIRELESS/download (2).jpg" alt="Hp wireless mouse">
+                        <div class="product-details">HP wireless, P 60.00</div>
+                        <button class="add-to-cart" onclick="addToCart('Hp wireless', 289.99, 'images/mice/HP/WIRELESS/download (2).jpg')">Add to Cart</button>
+                    </div>
+                    <div class="slide fade">
+                        <img class="img" src="images/mice/LENOVO/WIRELESS/download (1).jpg" alt="Lenovo wireless mouse">
+                        <div class="product-details">Lenovo wireless, 32GB RAM, P 999.99</div>
+                        <button class="add-to-cart" onclick="addToCart('Lenovo wireless', 999.99, 'images/mice/LENOVO/WIRELESS/download (1).jpg')">Add to Cart</button>
+                    </div>
+                    <a class="prev-far3" onclick="plusSlidesFar3(-1)" aria-label="Previous slide">❮</a>
+                    <a class="next-far3" onclick="plusSlidesFar3(1)" aria-label="Next slide">❯</a>
+                    <div class="dot-far3-container">
+                        <span class="dot-far3" onclick="currentSlideFar3(1)"></span>
+                        <span class="dot-far3" onclick="currentSlideFar3(2)"></span>
+                        <span class="dot-far3" onclick="currentSlideFar3(3)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <h3>Our website showcases and offers products and services but for more products visit our shop or <a href="services.html">call our agents</a> to enquire about our products.</h3>
+        </div>
+    </div>
+    <script>
+        function addToCart(name, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const id = `${name.replace(/\s/g, '-')}-${Date.now()}`;
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, name, price: parseFloat(price), image, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${name} has been added to your cart!`);
+        }
+            
+        // Par1 Slideshow
+        let slideIndexPar1 = 1;
+        showSlidesPar1(slideIndexPar1);
+
+        function plusSlidesPar1(n) {
+            showSlidesPar1(slideIndexPar1 += n);
+        }
+
+        function currentSlidePar1(n) {
+            showSlidesPar1(slideIndexPar1 = n);
+        }
+
+        function showSlidesPar1(n) {
+            let i;
+            let slides = document.querySelectorAll(".par1 .slide");
+            let dots = document.querySelectorAll(".par1 .dot-par1");
+            if (n > slides.length) { slideIndexPar1 = 1; }
+            if (n < 1) { slideIndexPar1 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexPar1 - 1].style.display = "block";
+            dots[slideIndexPar1 - 1].className += " active";
+        }
+
+        // Slideshow for par2
+        let slideIndexPar2 = 1;
+        showSlidesPar2(slideIndexPar2);
+
+        function plusSlidesPar2(n) {
+            showSlidesPar2(slideIndexPar2 += n);
+        }
+
+        function currentSlidePar2(n) {
+            showSlidesPar2(slideIndexPar2 = n);
+        }
+
+        function showSlidesPar2(n) {
+            let i;
+            let slides = document.querySelectorAll(".par2 .slide");
+            let dots = document.querySelectorAll(".par2 .dot-par2");
+            if (n > slides.length) { slideIndexPar2 = 1; }
+            if (n < 1) { slideIndexPar2 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexPar2 - 1].style.display = "block";
+            dots[slideIndexPar2 - 1].className += " active";
+        }
+
+        // Slideshow for par3
+        let slideIndexPar3 = 1;
+        showSlidesPar3(slideIndexPar3);
+
+        function plusSlidesPar3(n) {
+            showSlidesPar3(slideIndexPar3 += n);
+        }
+
+        function currentSlidePar3(n) {
+            showSlidesPar3(slideIndexPar3 = n);
+        }
+
+        function showSlidesPar3(n) {
+            let i;
+            let slides = document.querySelectorAll(".par3 .slide");
+            let dots = document.querySelectorAll(".par3 .dot-par3");
+            if (n > slides.length) { slideIndexPar3 = 1; }
+            if (n < 1) { slideIndexPar3 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexPar3 - 1].style.display = "block";
+            dots[slideIndexPar3 - 1].className += " active";
+        }
+
+        // Slideshow for car1
+        let slideIndexCar1 = 1;
+        showSlidesCar1(slideIndexCar1);
+
+        function plusSlidesCar1(n) {
+            showSlidesCar1(slideIndexCar1 += n);
+        }
+
+        function currentSlideCar1(n) {
+            showSlidesCar1(slideIndexCar1 = n);
+        }
+
+        function showSlidesCar1(n) {
+            let i;
+            let slides = document.querySelectorAll(".car1 .slide");
+            let dots = document.querySelectorAll(".car1 .dot-car1");
+            if (n > slides.length) { slideIndexCar1 = 1; }
+            if (n < 1) { slideIndexCar1 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexCar1 - 1].style.display = "block";
+            dots[slideIndexCar1 - 1].className += " active";
+        }
+
+        // Slideshow for car2
+        let slideIndexCar2 = 1;
+        showSlidesCar2(slideIndexCar2);
+
+        function plusSlidesCar2(n) {
+            showSlidesCar2(slideIndexCar2 += n);
+        }
+
+        function currentSlideCar2(n) {
+            showSlidesCar2(slideIndexCar2 = n);
+        }
+
+        function showSlidesCar2(n) {
+            let i;
+            let slides = document.querySelectorAll(".car2 .slide");
+            let dots = document.querySelectorAll(".car2 .dot-car2");
+            if (n > slides.length) { slideIndexCar2 = 1; }
+            if (n < 1) { slideIndexCar2 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexCar2 - 1].style.display = "block";
+            dots[slideIndexCar2 - 1].className += " active";
+        }
+
+        // Slideshow for car3
+        let slideIndexCar3 = 1;
+        showSlidesCar3(slideIndexCar3);
+
+        function plusSlidesCar3(n) {
+            showSlidesCar3(slideIndexCar3 += n);
+        }
+
+        function currentSlideCar3(n) {
+            showSlidesCar3(slideIndexCar3 = n);
+        }
+
+        function showSlidesCar3(n) {
+            let i;
+            let slides = document.querySelectorAll(".car3 .slide");
+            let dots = document.querySelectorAll(".car3 .dot-car3");
+            if (n > slides.length) { slideIndexCar3 = 1; }
+            if (n < 1) { slideIndexCar3 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexCar3 - 1].style.display = "block";
+            dots[slideIndexCar3 - 1].className += " active";
+        }
+
+        // Slideshow for dar1
+        let slideIndexDar1 = 1;
+        showSlidesDar1(slideIndexDar1);
+
+        function plusSlidesDar1(n) {
+            showSlidesDar1(slideIndexDar1 += n);
+        }
+
+        function currentSlideDar1(n) {
+            showSlidesDar1(slideIndexDar1 = n);
+        }
+
+        function showSlidesDar1(n) {
+            let i;
+            let slides = document.querySelectorAll(".dar1 .slide");
+            let dots = document.querySelectorAll(".dar1 .dot-dar1");
+            if (n > slides.length) { slideIndexDar1 = 1; }
+            if (n < 1) { slideIndexDar1 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexDar1 - 1].style.display = "block";
+            dots[slideIndexDar1 - 1].className += " active";
+        }
+
+        // Slideshow for dar2
+        let slideIndexDar2 = 1;
+        showSlidesDar2(slideIndexDar2);
+
+        function plusSlidesDar2(n) {
+            showSlidesDar2(slideIndexDar2 += n);
+        }
+
+        function currentSlideDar2(n) {
+            showSlidesDar2(slideIndexDar2 = n);
+        }
+
+        function showSlidesDar2(n) {
+            let i;
+            let slides = document.querySelectorAll(".dar2 .slide");
+            let dots = document.querySelectorAll(".dar2 .dot-dar2");
+            if (n > slides.length) { slideIndexDar2 = 1; }
+            if (n < 1) { slideIndexDar2 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexDar2 - 1].style.display = "block";
+            dots[slideIndexDar2 - 1].className += " active";
+        }
+
+        // Slideshow for dar3
+        let slideIndexDar3 = 1;
+        showSlidesDar3(slideIndexDar3);
+
+        function plusSlidesDar3(n) {
+            showSlidesDar3(slideIndexDar3 += n);
+        }
+
+        function currentSlideDar3(n) {
+            showSlidesDar3(slideIndexDar3 = n);
+        }
+
+        function showSlidesDar3(n) {
+            let i;
+            let slides = document.querySelectorAll(".dar3 .slide");
+            let dots = document.querySelectorAll(".dar3 .dot-dar3");
+            if (n > slides.length) { slideIndexDar3 = 1; }
+            if (n < 1) { slideIndexDar3 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexDar3 - 1].style.display = "block";
+            dots[slideIndexDar3 - 1].className += " active";
+        }
+
+        // Slideshow for dar4
+        let slideIndexDar4 = 1;
+        showSlidesDar4(slideIndexDar4);
+
+        function plusSlidesDar4(n) {
+            showSlidesDar4(slideIndexDar4 += n);
+        }
+
+        function currentSlideDar4(n) {
+            showSlidesDar4(slideIndexDar4 = n);
+        }
+
+        function showSlidesDar4(n) {
+            let i;
+            let slides = document.querySelectorAll(".dar4 .slide");
+            let dots = document.querySelectorAll(".dar4 .dot-dar4");
+            if (n > slides.length) { slideIndexDar4 = 1; }
+            if (n < 1) { slideIndexDar4 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexDar4 - 1].style.display = "block";
+            dots[slideIndexDar4 - 1].className += " active";
+        }
+
+        // Slideshow for dar5
+        let slideIndexDar5 = 1;
+        showSlidesDar5(slideIndexDar5);
+
+        function plusSlidesDar5(n) {
+            showSlidesDar5(slideIndexDar5 += n);
+        }
+
+        function currentSlideDar5(n) {
+            showSlidesDar5(slideIndexDar5 = n);
+        }
+
+        // Fix for showSlidesDar5
+        function showSlidesDar5(n) {
+            let i;
+            let slides = document.querySelectorAll(".dar5 .slide");
+            let dots = document.querySelectorAll(".dar5 .dot-dar5");
+            if (n > slides.length) { slideIndexDar5 = 1; }
+            if (n < 1) { slideIndexDar5 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexDar5 - 1].style.display = "block"; // Changed from flex to block
+            dots[slideIndexDar5 - 1].className += " active";
+        }
+        
+        
+            
+         // Slideshow for ear1
+        let slideIndexEar1 = 1;
+        showSlidesEar1(slideIndexEar1);
+
+        function plusSlidesEar1(n) {
+            showSlidesEar1(slideIndexEar1 += n);
+        }
+
+        function currentSlideEar1(n) {
+            showSlidesEar1(slideIndexEar1 = n);
+        }
+
+        function showSlidesEar1(n) {
+            let i;
+            let slides = document.querySelectorAll(".ear1 .slide");
+            let dots = document.querySelectorAll(".ear1 .dot-ear1");
+            if (n > slides.length) { slideIndexEar1 = 1; }
+            if (n < 1) { slideIndexEar1 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexEar1 - 1].style.display = "block";
+            dots[slideIndexEar1 - 1].className += " active";
+        }
+
+        // Slideshow for ear2
+        let slideIndexEar2 = 1;
+        showSlidesEar2(slideIndexEar2);
+
+        function plusSlidesEar2(n) {
+            showSlidesEar2(slideIndexEar2 += n);
+        }
+
+        function currentSlideEar2(n) {
+            showSlidesEar2(slideIndexEar2 = n);
+        }
+
+        function showSlidesEar2(n) {
+            let i;
+            let slides = document.querySelectorAll(".ear2 .slide");
+            let dots = document.querySelectorAll(".ear2 .dot-ear2");
+            if (n > slides.length) { slideIndexEar2 = 1; }
+            if (n < 1) { slideIndexEar2 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexEar2 - 1].style.display = "block";
+            dots[slideIndexEar2 - 1].className += " active";
+        }
+
+        // Slideshow for ear3
+        let slideIndexEar3 = 1;
+        showSlidesEar3(slideIndexEar3);
+
+        function plusSlidesEar3(n) {
+            showSlidesEar3(slideIndexEar3 += n);
+        }
+
+        function currentSlideEar3(n) {
+            showSlidesEar3(slideIndexEar3 = n);
+        }
+
+        function showSlidesEar3(n) {
+            let i;
+            let slides = document.querySelectorAll(".ear3 .slide");
+            let dots = document.querySelectorAll(".ear3 .dot-ear3");
+            if (n > slides.length) { slideIndexEar3 = 1; }
+            if (n < 1) { slideIndexEar3 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexEar3 - 1].style.display = "block";
+            dots[slideIndexEar3 - 1].className += " active";
+        }
+            
+        // Slideshow for far1
+        let slideIndexFar1 = 1;
+        showSlidesFar1(slideIndexFar1);
+
+        function plusSlidesFar1(n) {
+            showSlidesFar1(slideIndexFar1 += n);
+        }
+
+        function currentSlideFar1(n) {
+            showSlidesFar1(slideIndexFar1 = n);
+        }
+
+        function showSlidesFar1(n) {
+            let i;
+            let slides = document.querySelectorAll(".far1 .slide");
+            let dots = document.querySelectorAll(".far1 .dot-far1");
+            if (n > slides.length) { slideIndexFar1 = 1; }
+            if (n < 1) { slideIndexFar1 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexFar1 - 1].style.display = "block";
+            dots[slideIndexFar1 - 1].className += " active";
+        }
+
+        // Slideshow for far2
+        let slideIndexFar2 = 2;
+        showSlidesFar2(slideIndexFar2);
+
+        function plusSlidesFar2(n) {
+            showSlidesFar2(slideIndexFar2 += n);
+        }
+
+        function currentSlideFar2(n) {
+            showSlidesFar2(slideIndexFar2 = n);
+        }
+        function showSlidesFar2(n) {
+            let i;
+            let slides = document.querySelectorAll(".far2 .slide");
+            let dots = document.querySelectorAll(".far2 .dot-far2");
+            if (n > slides.length) { slideIndexFar2 = 1; } // Fixed typo
+            if (n < 1) { slideIndexFar2 = slides.length; } // Fixed typo
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexFar2 - 1].style.display = "block";
+            dots[slideIndexFar2 - 1].className += " active";
+        }
+          
+          // Slideshow for far3
+        let slideIndexFar3 = 3;
+        showSlidesFar3(slideIndexFar3);
+
+        function plusSlidesFar3(n) {
+            showSlidesFar3(slideIndexFar3 += n);
+        }
+
+        function currentSlideFar3(n) {
+            showSlidesFar3(slideIndexFar3 = n);
+        }
+        function showSlidesFar3(n) {
+            let i;
+            let slides = document.querySelectorAll(".far3 .slide");
+            let dots = document.querySelectorAll(".far3 .dot-far3");
+            if (n > slides.length) { slideIndexFar3 = 1; }
+            if (n < 1) { slideIndexFar3 = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexFar3 - 1].style.display = "block";
+            dots[slideIndexFar3 - 1].className += " active";
+        }
+             
+           // Add resize handler
+        window.addEventListener('resize', () => {
+            showSlidesPar1(slideIndexPar1);
+            showSlidesPar2(slideIndexPar2);
+            showSlidesPar3(slideIndexPar3);
+            showSlidesCar1(slideIndexCar1);
+            showSlidesCar2(slideIndexCar2);
+            showSlidesCar3(slideIndexCar3);
+            showSlidesDar1(slideIndexDar1);
+            showSlidesDar2(slideIndexDar2);
+            showSlidesDar3(slideIndexDar3);
+            showSlidesDar4(slideIndexDar4);
+            showSlidesDar5(slideIndexDar5);
+            showSlidesEar1(slideIndexEar1);
+            showSlidesEar2(slideIndexEar2);
+            showSlidesEar3(slideIndexEar3);
+            showSlidesFar1(slideIndexFar1);
+            showSlidesFar2(slideIndexFar2);
+            showSlidesFar3(slideIndexFar3);
+        });
+           // Fetch CSRF token on page load
+        window.onload = fetchCsrfToken;
+    
+        // Search index
+        const searchIndex = [
+            { keywords: ['desktop', 'computer', 'pc', 'acer', 'dell', 'hp', 'lenovo', 'mini pc', 'tower', 'small factor'], 
+            title: 'Computer Products', 
+            description: 'Explore our range of desktops, mini PCs, and towers.', 
+            url: 'products.html' },
+            { keywords: ['monitor', 'dell monitor', 'lenovo monitor', '22 inch'], 
+            title: 'Monitors', 
+            description: 'Find high-quality monitors for your office or home.', 
+            url: 'products.html' },
+            { keywords: ['keyboard', 'mouse', 'wired', 'wireless', 'combo', 'hp keyboard', 'dell keyboard', 'lenovo mouse'], 
+            title: 'Keyboards and Mice', 
+            description: 'Browse our selection of keyboards and mice.', 
+            url: 'products.html' },
+            { keywords: ['gadget', 'gadgets', 'tech gadgets'], 
+            title: 'Gadgets', 
+            description: 'Discover the latest tech gadgets.', 
+            url: 'gadgets.html' },
+            { keywords: ['services', 'point of sale', 'pos', 'training', 'installation', 'software'], 
+            title: 'Services', 
+            description: 'Learn about our point of sale software, training, and installation services.', 
+            url: 'services.html' },
+            { keywords: ['home', 'explore', 'welcome', 'elvcomputech'], 
+            title: 'Home', 
+            description: 'Welcome to ELVCOMPU TECH BW, your one-stop shop.', 
+            url: 'home.html' }
+        ];
+        const softwareKeywords = [
+            'software', 'browsers', 'office suites', 'document readers',
+            'google chrome', 'mozilla firefox', 'ms office', 'libre office',
+            'adobe acrobat', 'foxit reader'
+        ];
+             
+        // Handle search form submission
+        document.getElementById('search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.style.display = 'block';
+    
+            if (!query) {
+                resultsContainer.innerHTML = '<p class="no-results">Please enter a search term.</p>';
+                return;
+            }
+    
+            if (softwareKeywords.some(keyword => keyword.toLowerCase().includes(query))) {
+                window.location.href = '/softwares.html';
+                return;
+            }
+    
+            const results = searchIndex.filter(item => 
+                item.keywords.some(keyword => keyword.toLowerCase().includes(query)) ||
+                item.title.toLowerCase().includes(query) ||
+                item.description.toLowerCase().includes(query)
+            );
+    
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<p class="no-results">No results found for "' + query + '".</p>';
+                return;
+            }
+    
+            resultsContainer.innerHTML = '';
+            results.forEach(result => {
+                const resultElement = document.createElement('div');
+                resultElement.className = 'result-item';
+                resultElement.innerHTML = `
+                    <h3><a href="${result.url}">${result.title}</a></h3>
+                    <p>${result.description}</p>
+                `;
+                resultsContainer.appendChild(resultElement);
+            });
+        });
+    
+        // Initialize page
+        window.onload = async function() {
+            await fetchCsrfToken();
+            showLogin();
+        };
+    </script>
+</body>
+</html>

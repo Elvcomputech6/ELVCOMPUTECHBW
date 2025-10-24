@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELVCOMPU TECH BW</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 16px;
+        }
+        body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            width: 100%;
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        h1 {
+            color: black;
+            font-size: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        h2 a {
+            color: orangered;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        p {
+            font-weight: bold;
+            font-size: 1.375rem;
+            color: black;
+            letter-spacing: 0.05rem;
+            margin: 1rem 0;
+        }
+        p a {
+            color: orangered;
+            font-size: 1.375rem;
+            font-weight: normal;
+            text-decoration: none;
+        }
+        b {
+            color: blue;
+            font-size: 1.375rem;
+            font-weight: normal;
+        }
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            margin-top: 1rem;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topnav a {
+            color: #f2f2f2;
+            text-align: center;
+            padding: 0.875rem 1rem;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .topnav a:hover {
+            background-color: white;
+            color: black;
+        }
+        .topnav a.active {
+            background-color: green;
+            color: white;
+        }
+        .topnav .search-container {
+            padding: 0.375rem 0.5rem;
+        }
+        .topnav input[type="text"] {
+            padding: 0.375rem;
+            font-size: 1rem;
+            border: none;
+            width: 100%;
+            max-width: 200px;
+        }
+        .topnav .search-container button {
+            padding: 0.5rem 1rem;
+            background: #ddd;
+            font-size: 0.875rem;
+            border: none;
+            cursor: pointer;
+        }
+        .topnav .search-container button:hover {
+            background: #ccc;
+        }
+        .dropdown {
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            font-size: 1rem;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 0.875rem 0.625rem;
+            background-color: inherit;
+            font-family: inherit;
+            cursor: pointer;
+        }
+        .dropdown:hover .dropbtn {
+            background-color: white;
+            color: black;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .slideshow-container {
+            width: 100%;
+            max-width: 560px;
+            margin: 2rem auto;
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 32%;
+            height: 0;
+        }
+        .slide {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+            object-position: center;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 1rem;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+            transition: background-color 0.6s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .next {
+            right: 0;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .dot-container {
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+        .dot {
+            cursor: pointer;
+            height: 0.9375rem;
+            width: 0.9375rem;
+            margin: 0 0.3125rem;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+        .fade {
+            animation: fade 1.5s;
+        }
+        @keyframes fade {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 2rem auto;
+            background-color: #f9f9f9;
+            padding: 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 1.25rem;
+            font-size: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 0.9375rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3125rem;
+            color: #555;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .form-group button {
+            background-color: orangered;
+            color: white;
+            padding: 0.625rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.125rem;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        .form-group button:hover {
+            background-color: #ff6600;
+        }
+        .show-password, #capture-btn, #snap-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            margin-top: 0.5rem;
+        }
+        .show-password:hover, #capture-btn:hover, #snap-btn:hover {
+            background-color: #45a049;
+        }
+        #video, #canvas {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            max-width: 100%;
+        }
+        .form-switch {
+            text-align: center;
+            margin-top: 0.9375rem;
+            font-size: 0.875rem;
+            color: #777;
+        }
+        .form-switch a {
+            color: blue;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .form-switch a:hover {
+            text-decoration: underline;
+        }
+        #signup-form, #forgot-password-form {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            html {
+                font-size: 18px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .topnav {
+                flex-wrap: nowrap;
+            }
+            .topnav a {
+                font-size: 1.125rem;
+            }
+            .slideshow-container {
+                max-width: 50%;
+                aspect-ratio: 4 / 3;
+            }
+            .form-container {
+                max-width: 400px;
+            }
+        }
+        @media (max-width: 600px) {
+            .topnav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .topnav a {
+                width: 100%;
+                text-align: left;
+            }
+            .topnav .search-container {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+            .topnav input[type="text"] {
+                max-width: none;
+            }
+            .dropdown {
+                width: 100%;
+            }
+            .dropdown .dropbtn {
+                width: 100%;
+                text-align: left;
+            }
+            .dropdown-content {
+                position: static;
+                width: 100%;
+            }
+        }
+        .results-container {
+            margin-top: 2rem;
+        }
+        .result-item {
+            padding: 1rem;
+            border-bottom: 1px solid #ccc;
+        }
+        .result-item a {
+            color: orangered;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .result-item a:hover {
+            text-decoration: underline;
+        }
+        .no-results {
+            color: #777;
+            font-size: 1rem;
+        }
+        .error-message {
+            display: none;
+            color: red;
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+        }
+        #forgot-password-form {
+            width: 100%;
+            max-width: 400px;
+            margin: 2rem auto;
+            background-color: #f9f9f9;
+            padding: 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 0.125rem 0.3125rem rgba(231, 224, 224, 0.1);
+        }
+        #forgot-password-form h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 1.25rem;
+            font-size: 1.5rem;
+        }
+        #forgot-password-form .form-group {
+            margin-bottom: 0.9375rem;
+        }
+        #forgot-password-form .form-group label {
+            display: block;
+            margin-bottom: 0.3125rem;
+            color: black;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        #forgot-password-form .form-group input[type="email"],
+        #forgot-password-form .form-group input[type="text"],
+        #forgot-password-form .form-group input[type="password"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        #forgot-password-form .form-group button {
+            background-color: orangered;
+            color: white;
+            padding: 0.625rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.125rem;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        #forgot-password-form .form-group button:hover {
+            background-color: #ff6600;
+        }
+        #forgot-password-form .step {
+            display: none;
+        }
+        #forgot-password-form .step.active {
+            display: block;
+        }
+        .back-to-login {
+            text-align: center;
+            margin-top: 0.9375rem;
+            font-size: 0.875rem;
+            color: #777;
+        }
+        .back-to-login a {
+            color: blue;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-to-login a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ELVCOMPU<br>TECH BW</h1>
+        <div class="topnav">
+            <a class="active" href="home.html">Explore</a>
+            <a href="products.html">COMPUTER PRODUCTS</a>
+            <a href="gadgets.html">GADGETS</a>
+            <a href="services.html">SERVICES</a>
+            <div class="search-container">
+                <form id="search-form">
+                    <input type="text" placeholder="Search.." name="search" id="search-input">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div class="results-container" id="search-results" style="display: none;"></div>
+        </div>
+        <h2>WELCOME TO <a href="home.html">ELVCOMPU TECH BW</a></h2>
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <a href="home.html"><img src="images/desktop set 1.jpg" alt="Desktop Set 1"></a>
+            </div>
+            <div class="slide fade">
+                <a href="home.html"><img src="images/desktop set 2.jpg" alt="Desktop Set 2"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/desktops/MINI PC/ACER/download (1).jpg" alt="Acer Mini PC"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/desktops/MINI PC/DELL/download (1).jpg" alt="Dell Mini PC"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/desktops/SMALL FACTOR/LENOVO/download (1).jpg" alt="Lenovo Small Factor"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/desktops/SMALL FACTOR/HP/download (1).jpg" alt="HP Small Factor"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/desktops/TOWER/ACER/download (1).jpg" alt="Acer Tower"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/desktops/TOWER/HP/download (1).jpg" alt="HP Tower"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/monitors/DELL/22 inches/download (5).jpg" alt="Dell 22-inch Monitor"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/monitors/LENOVO/22 inches/download (2).jpg" alt="Lenovo 22-inch Monitor"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/keyboards/HP/LED/download (1).jpg" alt="HP LED Keyboard"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/keyboards/DELL/WIRED/images.jpg" alt="Dell Wired Keyboard"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/mice/DELL/LED/download (1).jpg" alt="Dell LED Mouse"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/mice/LENOVO/WIRED/download (4).jpg" alt="Lenovo Wired Mouse"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/keyboards/DELL/WIRED COMBO/download (2).jpg" alt="Dell Wired Combo"></a>
+            </div>
+            <div class="slide fade">
+                <a href="products.html"><img src="images/keyboards/LENOVO/WIRELESS COMBO/download (1).jpg" alt="Lenovo Wireless Combo"></a>
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+                <span class="dot" onclick="currentSlide(9)"></span>
+                <span class="dot" onclick="currentSlide(10)"></span>
+                <span class="dot" onclick="currentSlide(11)"></span>
+                <span class="dot" onclick="currentSlide(12)"></span>
+                <span class="dot" onclick="currentSlide(13)"></span>
+                <span class="dot" onclick="currentSlide(14)"></span>
+                <span class="dot" onclick="currentSlide(15)"></span>
+                <span class="dot" onclick="currentSlide(16)"></span>
+            </div>
+        </div>
+        <p>YOUR ONE STOP SHOP FOR ALL THE <a href="products.html">COMPUTER PRODUCTS, GADGETS AND SOFTWARES</a><br>YOU NEED FOR YOUR
+            <b>OFFICE, HOME AND GAMING ENVIRONMENT</b><br>WE ALSO OFFER <a href="services.html">POINT OF SALE</a> SOFTWARES, SERVICES, TRAINING AND INSTALLATION.<br>
+            FOR MORE INFORMATION, CLICK ON THE <b><a href="services.html">SERVICES</a></b> TAB ON THE NAVIGATION BAR AND IT WILL DIRECT YOU TO OUR CALL CENTER AND AGENTS
+        </p>
+        <!-- Login Form -->
+        <div id="login-form" class="form-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" name="email" autocomplete="username" required>
+                    <span class="error-message" id="login-email-error">Please enter a valid email.</span>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="password" autocomplete="current-password" required>
+                    <button type="button" class="show-password" onclick="togglePassword('login-password')">Show Password</button>
+                    <span class="error-message" id="login-password-error">Password must be at least 8 characters.</span>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+                <div class="form-switch">
+                    <a href="#" onclick="showForgotPassword()">Forgot Password?</a>
+                </div>
+                <div class="form-switch">
+                    Don't have an account? <a href="#" onclick="showSignup()">Sign up</a>
+                </div>
+            </form>
+        </div>
+        <!-- Signup Form -->
+        <div id="signup-form" class="form-container">
+            <h2>Sign Up</h2>
+            <form id="signupForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="signup-username">Username:</label>
+                    <input type="text" id="signup-username" name="username" autocomplete="username" required>
+                    <span class="error-message" id="signup-username-error">Username must be 3-20 characters.</span>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email:</label>
+                    <input type="email" id="signup-email" name="email" autocomplete="email" required>
+                    <span class="error-message" id="signup-email-error">Please enter a valid email.</span>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" name="password" autocomplete="new-password" required>
+                    <button type="button" class="show-password" onclick="togglePassword('signup-password')">Show Password</button>
+                    <span class="error-message" id="signup-password-error">Password must be 8+ characters with a number and special character.</span>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password" required>
+                    <button type="button" class="show-password" onclick="togglePassword('confirm-password')">Show Password</button>
+                    <span class="error-message" id="confirm-password-error">Passwords do not match.</span>
+                </div>
+                <!-- Document Uploads -->
+                <div class="form-group">
+                    <label for="id-document">ID Card, Driver's License, or Passport:</label>
+                    <input type="file" id="id-document" name="id-document" accept="image/jpeg,image/png,application/pdf" required>
+                    <span class="error-message" id="id-document-error">Please upload a valid image or PDF file (max 5MB).</span>
+                </div>
+                <!-- Real-Time Face Verification -->
+                <div class="form-group">
+                    <label>Face Verification:</label>
+                    <video id="video" width="100%" height="auto" autoplay style="display: none;"></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                    <button type="button" id="capture-btn" onclick="startCamera()">Start Camera</button>
+                    <button type="button" id="snap-btn" onclick="capturePhoto()" style="display: none;">Capture Photo</button>
+                    <span class="error-message" id="face-verification-error">Please capture a photo for verification.</span>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Sign Up</button>
+                </div>
+                <div class="form-switch">
+                    Already have an account? <a href="#" onclick="showLogin()">Login</a>
+                </div>
+            </form>
+        </div>
+        <!-- Forgot Password Form -->
+        <div id="forgot-password-form" class="form-container">
+            <h2>Reset Password</h2>
+            <form id="forgotPasswordForm">
+                <div class="step active" id="step1">
+                    <div class="form-group">
+                        <label for="forgot-email">Email:</label>
+                        <input type="email" id="forgot-email" name="email" autocomplete="email" required>
+                        <span class="error-message" id="forgot-email-error">Please enter a valid email.</span>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" onclick="sendResetCode()">Send Verification Code</button>
+                    </div>
+                </div>
+                <div class="step" id="step2">
+                    <div class="form-group">
+                        <label for="reset-code">Verification Code:</label>
+                        <input type="text" id="reset-code" name="code" required>
+                        <span class="error-message" id="reset-code-error">Invalid or expired code.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">New Password:</label>
+                        <input type="password" id="new-password" name="password" autocomplete="new-password" required>
+                        <button type="button" class="show-password" onclick="togglePassword('new-password')">Show Password</button>
+                        <span class="error-message" id="new-password-error">Password must be 8+ characters with a number and special character.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-new-password">Confirm New Password:</label>
+                        <input type="password" id="confirm-new-password" name="confirm-password" autocomplete="new-password" required>
+                        <button type="button" class="show-password" onclick="togglePassword('confirm-new-password')">Show Password</button>
+                        <span class="error-message" id="confirm-new-password-error">Passwords do not match.</span>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" onclick="resetPassword()">Reset Password</button>
+                    </div>
+                </div>
+            </form>
+            <div class="back-to-login">
+                <a href="#" onclick="showLogin()">Back to Login</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Environment configuration
+        const API_BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://your-production-url.com';
+
+        // Global variables
+        let forgotEmail = null;
+        let slideIndex = 1;
+        let slideshowInterval = null;
+        let stream = null;
+
+        // Toggle Password Visibility
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const button = passwordInput.nextElementSibling;
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                button.textContent = 'Hide Password';
+            } else {
+                passwordInput.type = 'password';
+                button.textContent = 'Show Password';
+            }
+        }
+
+        // Camera and Face Verification
+        async function startCamera() {
+            try {
+                const video = document.getElementById('video');
+                const captureBtn = document.getElementById('capture-btn');
+                const snapBtn = document.getElementById('snap-btn');
+                stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+                video.style.display = 'block';
+                captureBtn.style.display = 'none';
+                snapBtn.style.display = 'block';
+            } catch (error) {
+                console.error('Camera access error:', error);
+                showError('Unable to access camera. Please allow camera permissions.', document.getElementById('signupForm'));
+            }
+        }
+
+        function capturePhoto() {
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            canvas.style.display = 'block';
+            video.style.display = 'none';
+            document.getElementById('snap-btn').style.display = 'none';
+            document.getElementById('capture-btn').style.display = 'block';
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+            }
+        }
+
+        // Slideshow functionality
+        function startSlideshow() {
+            clearInterval(slideshowInterval);
+            slideshowInterval = setInterval(() => plusSlides(1), 5000);
+        }
+
+        function pauseSlideshow() {
+            clearInterval(slideshowInterval);
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            if (!slides.length) return;
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+        // Fetch CSRF token
+        async function fetchCsrfToken() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/csrf-token`, {
+                    method: 'GET',
+                    credentials: 'include',
+                });
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                const data = await response.json();
+                if (!data.success) throw new Error(data.message || 'Failed to fetch CSRF token');
+                return data.csrfToken;
+            } catch (error) {
+                console.error('Failed to fetch CSRF token:', error);
+                showError('Failed to initialize form. Please refresh the page.');
+                return null;
+            }
+        }
+
+        // Show error message
+        function showError(message, targetElement = null) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.style.display = 'block';
+            errorDiv.style.textAlign = 'center';
+            errorDiv.textContent = message;
+            if (targetElement) {
+                targetElement.appendChild(errorDiv);
+            } else {
+                document.querySelector('.container').prepend(errorDiv);
+            }
+            setTimeout(() => errorDiv.remove(), 5000);
+        }
+
+        // Form switching
+        function showForm(formId) {
+            const forms = ['login-form', 'signup-form', 'forgot-password-form'];
+            forms.forEach(id => document.getElementById(id).style.display = id === formId ? 'block' : 'none');
+            if (formId === 'forgot-password-form') {
+                document.getElementById('step1').classList.add('active');
+                document.getElementById('step2').classList.remove('active');
+                forgotEmail = null;
+            }
+            if (formId !== 'login-form') pauseSlideshow(); else startSlideshow();
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+                document.getElementById('video').style.display = 'none';
+                document.getElementById('canvas').style.display = 'none';
+                document.getElementById('capture-btn').style.display = 'block';
+                document.getElementById('snap-btn').style.display = 'none';
+            }
+        }
+
+        async function showSignup() { showForm('signup-form'); }
+        async function showLogin() { showForm('login-form'); }
+        async function showForgotPassword() { showForm('forgot-password-form'); }
+
+        // Form validation utility
+        function validateEmail(email, errorElement) {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!email) {
+                errorElement.textContent = 'Email is required.';
+                errorElement.style.display = 'block';
+                return false;
+            }
+            if (!emailRegex.test(email)) {
+                errorElement.textContent = 'Please enter a valid email address.';
+                errorElement.style.display = 'block';
+                return false;
+            }
+            errorElement.style.display = 'none';
+            return true;
+        }
+
+        function validatePassword(password, errorElement, confirmPassword = null, confirmError = null) {
+            const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+            if (!password) {
+                errorElement.textContent = 'Password is required.';
+                errorElement.style.display = 'block';
+                return false;
+            }
+            if (!passwordRegex.test(password)) {
+                errorElement.textContent = 'Password must be 8+ characters with a number and special character.';
+                errorElement.style.display = 'block';
+                return false;
+            }
+            errorElement.style.display = 'none';
+            if (confirmPassword && password !== confirmPassword) {
+                confirmError.textContent = 'Passwords do not match.';
+                confirmError.style.display = 'block';
+                return false;
+            }
+            if (confirmError) confirmError.style.display = 'none';
+            return true;
+        }
+
+        function validateFile(file, errorElement) {
+            if (!file) {
+                errorElement.textContent = 'Please upload a file.';
+                errorElement.style.display = 'block';
+                return false;
+            }
+            const validTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+            if (!validTypes.includes(file.type)) {
+                errorElement.textContent = 'Invalid file type. Please upload JPEG, PNG, or PDF.';
+                errorElement.style.display = 'block';
+                return false;
+            }
+            if (file.size > 5 * 1024 * 1024) {
+                errorElement.textContent = 'File size exceeds 5MB.';
+                errorElement.style.display = 'block';
+                return false;
+            }
+            errorElement.style.display = 'none';
+            return true;
+        }
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            let valid = true;
+            const email = document.getElementById('login-email').value.trim().toLowerCase();
+            const password = document.getElementById('login-password').value;
+            const emailError = document.getElementById('login-email-error');
+            const passwordError = document.getElementById('login-password-error');
+
+            valid = validateEmail(email, emailError) && valid;
+            valid = validatePassword(password, passwordError) && valid;
+
+            if (valid) {
+                try {
+                    const token = await fetchCsrfToken();
+                    if (!token) return;
+                    const response = await fetch(`${API_BASE_URL}/api/login`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-Token': token,
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify({ email, password }),
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        window.location.href = 'accounts.html';
+                    } else {
+                        showError(data.message || 'Login failed. Please check your credentials.', document.getElementById('loginForm'));
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    showError('An error occurred during login. Please try again.', document.getElementById('loginForm'));
+                }
+            }
+        });
+
+        // Signup form submission
+        document.getElementById('signupForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            let valid = true;
+            const username = document.getElementById('signup-username').value.trim();
+            const email = document.getElementById('signup-email').value.trim().toLowerCase();
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const idDocument = document.getElementById('id-document').files[0];
+            const canvas = document.getElementById('canvas');
+            const usernameError = document.getElementById('signup-username-error');
+            const emailError = document.getElementById('signup-email-error');
+            const passwordError = document.getElementById('signup-password-error');
+            const confirmError = document.getElementById('confirm-password-error');
+            const documentError = document.getElementById('id-document-error');
+            const faceError = document.getElementById('face-verification-error');
+
+            // Validate inputs
+            if (!username || username.length < 3 || username.length > 20) {
+                usernameError.textContent = 'Username must be 3-20 characters.';
+                usernameError.style.display = 'block';
+                valid = false;
+            } else {
+                usernameError.style.display = 'none';
+            }
+
+            valid = validateEmail(email, emailError) && valid;
+            valid = validatePassword(password, passwordError, confirmPassword, confirmError) && valid;
+            valid = validateFile(idDocument, documentError) && valid;
+
+            // Validate face capture
+            if (canvas.width === 0 || canvas.height === 0) {
+                faceError.textContent = 'Please capture a photo for verification.';
+                faceError.style.display = 'block';
+                valid = false;
+            } else {
+                faceError.style.display = 'none';
+            }
+
+            if (valid) {
+                try {
+                    const token = await fetchCsrfToken();
+                    if (!token) return;
+
+                    // Convert canvas to Blob for face photo
+                    const facePhoto = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg'));
+
+                    // Prepare FormData for file uploads
+                    const formData = new FormData();
+                    formData.append('username', username);
+                    formData.append('email', email);
+                    formData.append('password', password);
+                    formData.append('idDocument', idDocument);
+                    formData.append('facePhoto', facePhoto, 'face.jpg');
+
+                    const response = await fetch(`${API_BASE_URL}/api/signup`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-Token': token,
+                        },
+                        credentials: 'include',
+                        body: formData,
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        showError('Signup successful! Check your email for the verification code.', document.getElementById('signupForm'));
+                        setTimeout(() => {
+                            window.location.href = `verify.html?email=${encodeURIComponent(email)}`;
+                        }, 2000);
+                    } else {
+                        showError(data.message || 'Signup failed. Please check your input.', document.getElementById('signupForm'));
+                    }
+                } catch (error) {
+                    console.error('Signup error:', error);
+                    showError('An error occurred during signup. Please try again.', document.getElementById('signupForm'));
+                }
+            }
+        });
+
+        // Forgot Password - Step 1: Send Verification Code
+        async function sendResetCode() {
+            const email = document.getElementById('forgot-email').value.trim().toLowerCase();
+            const emailError = document.getElementById('forgot-email-error');
+            if (!validateEmail(email, emailError)) return;
+            forgotEmail = email;
+
+            try {
+                const token = await fetchCsrfToken();
+                if (!token) return;
+                const response = await fetch(`${API_BASE_URL}/api/forgot-password`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': token,
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({ email }),
+                });
+                const data = await response.json();
+                if (data.success) {
+                    document.getElementById('step1').classList.remove('active');
+                    document.getElementById('step2').classList.add('active');
+                    showError('Verification code sent to your email.', document.getElementById('forgotPasswordForm'));
+                } else {
+                    showError(data.message || 'Failed to send verification code.', document.getElementById('forgotPasswordForm'));
+                }
+            } catch (error) {
+                console.error('Forgot password error:', error);
+                showError('An error occurred while sending the verification code.', document.getElementById('forgotPasswordForm'));
+            }
+        }
+
+        // Forgot Password - Step 2: Reset Password
+        async function resetPassword() {
+            let valid = true;
+            const code = document.getElementById('reset-code').value.trim();
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-new-password').value;
+            const codeError = document.getElementById('reset-code-error');
+            const passwordError = document.getElementById('new-password-error');
+            const confirmError = document.getElementById('confirm-new-password-error');
+
+            if (!code) {
+                codeError.textContent = 'Verification code is required.';
+                codeError.style.display = 'block';
+                valid = false;
+            } else {
+                codeError.style.display = 'none';
+            }
+
+            valid = validatePassword(newPassword, passwordError, confirmPassword, confirmError) && valid;
+
+            if (valid) {
+                try {
+                    const token = await fetchCsrfToken();
+                    if (!token) return;
+                    const response = await fetch(`${API_BASE_URL}/api/reset-password`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-Token': token,
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify({ email: forgotEmail, code, newPassword }),
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        showError('Password reset successfully. Please log in.', document.getElementById('forgotPasswordForm'));
+                        setTimeout(() => showLogin(), 2000);
+                    } else {
+                        codeError.textContent = data.message || 'Invalid or expired verification code.';
+                        codeError.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Reset password error:', error);
+                    showError('An error occurred while resetting the password.', document.getElementById('forgotPasswordForm'));
+                }
+            }
+        }
+
+        // Search index
+        const searchIndex = [
+            { keywords: ['desktop', 'computer', 'pc', 'acer', 'dell', 'hp', 'lenovo', 'mini pc', 'tower', 'small factor'], 
+              title: 'Computer Products', 
+              description: 'Explore our range of desktops, mini PCs, and towers.', 
+              url: 'products.html' },
+            { keywords: ['monitor', 'dell monitor', 'lenovo monitor', '22 inch'], 
+              title: 'Monitors', 
+              description: 'Find high-quality monitors for your office or home.', 
+              url: 'products.html' },
+            { keywords: ['keyboard', 'mouse', 'wired', 'wireless', 'combo', 'hp keyboard', 'dell keyboard', 'lenovo mouse'], 
+              title: 'Keyboards and Mice', 
+              description: 'Browse our selection of keyboards and mice.', 
+              url: 'products.html' },
+            { keywords: ['gadget', 'gadgets', 'tech gadgets'], 
+              title: 'Gadgets', 
+              description: 'Discover the latest tech gadgets.', 
+              url: 'gadgets.html' },
+            { keywords: ['services', 'point of sale', 'pos', 'training', 'installation', 'software'], 
+              title: 'Services', 
+              description: 'Learn about our point of sale software, training, and installation services.', 
+              url: 'services.html' },
+            { keywords: ['home', 'explore', 'welcome', 'elvcomputech'], 
+              title: 'Home', 
+              description: 'Welcome to ELVCOMPU TECH BW, your one-stop shop.', 
+              url: 'home.html' }
+        ];
+
+        const softwareKeywords = [
+            'software', 'browsers', 'office suites', 'document readers',
+            'google chrome', 'mozilla firefox', 'ms office', 'libre office',
+            'adobe acrobat', 'foxit reader'
+        ];
+
+        // Debounced search function
+        let searchTimeout;
+        function debounceSearch(query, resultsContainer) {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                if (!query) {
+                    resultsContainer.innerHTML = '<p class="no-results">Please enter a search term.</p>';
+                    resultsContainer.style.display = 'block';
+                    return;
+                }
+
+                if (softwareKeywords.some(keyword => keyword.toLowerCase().includes(query))) {
+                    window.location.href = '/softwares.html';
+                    return;
+                }
+
+                const results = searchIndex.filter(item => 
+                    item.keywords.some(keyword => keyword.toLowerCase().includes(query)) ||
+                    item.title.toLowerCase().includes(query) ||
+                    item.description.toLowerCase().includes(query)
+                );
+
+                resultsContainer.innerHTML = results.length === 0 
+                    ? `<p class="no-results">No results found for "${query}".</p>`
+                    : results.map(result => `
+                        <div class="result-item">
+                            <h3><a href="${result.url}">${result.title}</a></h3>
+                            <p>${result.description}</p>
+                        </div>
+                    `).join('');
+                resultsContainer.style.display = 'block';
+            }, 300);
+        }
+
+        // Handle search form submission
+        document.getElementById('search-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('search-results');
+            debounceSearch(query, resultsContainer);
+        });
+
+        // Cleanup camera on page unload
+        window.addEventListener('unload', () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+        });
+
+        // Initialize page
+        window.onload = async function () {
+            showSlides(slideIndex);
+            startSlideshow();
+            showLogin();
+            ['login-form', 'signup-form', 'forgot-password-form'].forEach(id => {
+                document.getElementById(id).addEventListener('focusin', pauseSlideshow);
+                document.getElementById(id).addEventListener('focusout', () => {
+                    if (document.getElementById('login-form').style.display === 'block') startSlideshow();
+                });
+            });
+        };
+    </script>
+</body>
+</html>
